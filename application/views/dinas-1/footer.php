@@ -48,7 +48,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-11">
-                    <p>© <?php echo Date('Y'); ?> Powered by Lokomedia.web.id.</p>
+                    <p>© <?php echo Date('Y'); ?> Powered by Universitas Sebelas Maret</p>
                 </div>
             </div>
         </div>
