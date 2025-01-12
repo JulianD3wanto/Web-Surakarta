@@ -2,10 +2,10 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost:3306
--- Generation Time: Feb 19, 2024 at 09:09 AM
--- Server version: 10.6.17-MariaDB
--- PHP Version: 8.1.26
+-- Host: 127.0.0.1
+-- Generation Time: Jan 12, 2025 at 04:42 AM
+-- Server version: 8.0.30
+-- PHP Version: 7.4.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `uussuta1_instansiv3`
+-- Database: `instansiv3`
 --
 
 -- --------------------------------------------------------
@@ -28,19 +28,19 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `agenda` (
-  `id_agenda` int(5) NOT NULL,
-  `tema` varchar(100) NOT NULL,
-  `tema_seo` varchar(100) NOT NULL,
-  `isi_agenda` text NOT NULL,
-  `tempat` varchar(100) NOT NULL,
-  `pengirim` varchar(100) NOT NULL,
-  `gambar` varchar(100) NOT NULL,
+  `id_agenda` int NOT NULL,
+  `tema` varchar(100) COLLATE latin1_general_ci NOT NULL,
+  `tema_seo` varchar(100) COLLATE latin1_general_ci NOT NULL,
+  `isi_agenda` text COLLATE latin1_general_ci NOT NULL,
+  `tempat` varchar(100) COLLATE latin1_general_ci NOT NULL,
+  `pengirim` varchar(100) COLLATE latin1_general_ci NOT NULL,
+  `gambar` varchar(100) COLLATE latin1_general_ci NOT NULL,
   `tgl_mulai` date NOT NULL,
   `tgl_selesai` date NOT NULL,
   `tgl_posting` date NOT NULL,
-  `jam` varchar(50) NOT NULL,
-  `dibaca` int(5) NOT NULL DEFAULT 1,
-  `username` varchar(50) NOT NULL
+  `jam` varchar(50) COLLATE latin1_general_ci NOT NULL,
+  `dibaca` int NOT NULL DEFAULT '1',
+  `username` varchar(50) COLLATE latin1_general_ci NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
 
 --
@@ -59,17 +59,17 @@ INSERT INTO `agenda` (`id_agenda`, `tema`, `tema_seo`, `isi_agenda`, `tempat`, `
 --
 
 CREATE TABLE `album` (
-  `id_album` int(5) NOT NULL,
-  `jdl_album` varchar(100) NOT NULL,
-  `album_seo` varchar(100) NOT NULL,
-  `keterangan` text NOT NULL,
-  `gbr_album` varchar(100) NOT NULL,
-  `aktif` enum('Y','N') NOT NULL DEFAULT 'Y',
-  `hits_album` int(5) NOT NULL DEFAULT 1,
+  `id_album` int NOT NULL,
+  `jdl_album` varchar(100) COLLATE latin1_general_ci NOT NULL,
+  `album_seo` varchar(100) COLLATE latin1_general_ci NOT NULL,
+  `keterangan` text COLLATE latin1_general_ci NOT NULL,
+  `gbr_album` varchar(100) COLLATE latin1_general_ci NOT NULL,
+  `aktif` enum('Y','N') COLLATE latin1_general_ci NOT NULL DEFAULT 'Y',
+  `hits_album` int NOT NULL DEFAULT '1',
   `tgl_posting` date NOT NULL,
   `jam` time NOT NULL,
-  `hari` varchar(20) NOT NULL,
-  `username` varchar(50) NOT NULL
+  `hari` varchar(20) COLLATE latin1_general_ci NOT NULL,
+  `username` varchar(50) COLLATE latin1_general_ci NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
 
 --
@@ -81,7 +81,7 @@ INSERT INTO `album` (`id_album`, `jdl_album`, `album_seo`, `keterangan`, `gbr_al
 (31, 'Festival Seni Terbesar di Dunia', 'festival-seni-terbesar-di-dunia', '', '13festival_seni.jpg', 'Y', 28, '2012-08-20', '09:40:01', 'Senin', 'admin'),
 (28, 'Murah Meriah di Pasar Asemka', 'murah-meriah-di-pasar-asemka', 'Pasar Asemka, Jakarta, merupakan pasar grosir yang banyak menyediakan berbagai aksesoris seperti kalung, cincin, Souvenir pernakahan, dan lainnya. Di Pasara Asemka anda akan dimanjakan dengan beragam barang yang dibandrol dengan harga murah meriah dan biasanya dijual grosiran. \r\n', '18asemka.jpg', 'Y', 79, '2012-08-18', '23:14:05', 'Sabtu', 'admin'),
 (29, 'Karpet Raksasa dari Bunga', 'karpet-raksasa-dari-bunga', 'Belgia sedang memperingati peristiwa tahunan &quot;La Fete De La Fleur&quot; atau pesta bunga di bulan Agustus. Ahli bunga merancang karpet raksasa dari bunga di depan Grand Place di Brussel. Karpet ini dibuat menggunakan 700 ribu bunga.\r\n', '92bungaraksasa2.jpg', 'Y', 122, '2012-08-19', '03:02:27', 'Minggu', 'admin'),
-(50, 'CMS Swarakalibata Ci Developer Team', 'cms-swarakalibata-ci-developer-team', '<p>CodeIgniter atau sering disebut dengan sebutan CI adalah salah satu framework MVC PHP yang sangat populer di dunia web programming. CodeIgniter adalah salah satu framework PHP yang ringan dan berusia hampir 10 tahun (dirilis pada tahun 2006) dan menjadi salah satu framework yang popular di Indonesia.<br />\r\n<br />\r\nPada Swarakalibata Versi Codeigniter tidak ada perubahan pada struktur database dan folder, jadi anda tidak perlu repot-repot unutk migrasi ke Swarakalibata versi Codeigniter. anda masih bisa menggunakan database yang lama tanpa perlu takut data-data pada web yang lama akan hilang. dan untuk template kita masih menggunakan template dari versi sebelumnya yaitu alegro Responsive Template dari orange-themes karena memang template ini sangat banyak sekali peminatnya dan untuk pilihan warna terdiri dari Red, Green, Blue, Orange, Purple, Pink, Tosca and Black. untuk template admin kita menggunakan adminLTE Responsive, juga pada swarakalibata versi Codeigniter untuk keamanannya pun jauh lebih baik dari versi Native.</p>\r\n', 'swarakalibata.jpg', 'Y', 21, '2017-05-20', '23:46:54', 'Sabtu', 'admin');
+(50, 'CMS Swarakalibata Ci Developer Team', 'cms-swarakalibata-ci-developer-team', '<p>CodeIgniter atau sering disebut dengan sebutan CI adalah salah satu framework MVC PHP yang sangat populer di dunia web programming. CodeIgniter adalah salah satu framework PHP yang ringan dan berusia hampir 10 tahun (dirilis pada tahun 2006) dan menjadi salah satu framework yang popular di Indonesia.<br />\r\n<br />\r\nPada Swarakalibata Versi Codeigniter tidak ada perubahan pada struktur database dan folder, jadi anda tidak perlu repot-repot unutk migrasi ke Swarakalibata versi Codeigniter. anda masih bisa menggunakan database yang lama tanpa perlu takut data-data pada web yang lama akan hilang. dan untuk template kita masih menggunakan template dari versi sebelumnya yaitu alegro Responsive Template dari orange-themes karena memang template ini sangat banyak sekali peminatnya dan untuk pilihan warna terdiri dari Red, Green, Blue, Orange, Purple, Pink, Tosca and Black. untuk template admin kita menggunakan adminLTE Responsive, juga pada swarakalibata versi Codeigniter untuk keamanannya pun jauh lebih baik dari versi Native.</p>\r\n', 'swarakalibata.jpg', 'Y', 23, '2017-05-20', '23:46:54', 'Sabtu', 'admin');
 
 -- --------------------------------------------------------
 
@@ -90,16 +90,16 @@ INSERT INTO `album` (`id_album`, `jdl_album`, `album_seo`, `keterangan`, `gbr_al
 --
 
 CREATE TABLE `background` (
-  `id_background` int(5) NOT NULL,
+  `id_background` int NOT NULL,
   `gambar` varchar(255) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `background`
 --
 
 INSERT INTO `background` (`id_background`, `gambar`) VALUES
-(1, 'blue');
+(1, 'green');
 
 -- --------------------------------------------------------
 
@@ -108,12 +108,12 @@ INSERT INTO `background` (`id_background`, `gambar`) VALUES
 --
 
 CREATE TABLE `banner` (
-  `id_banner` int(5) NOT NULL,
-  `judul` varchar(100) NOT NULL,
-  `url` varchar(100) NOT NULL,
-  `gambar` varchar(100) NOT NULL,
+  `id_banner` int NOT NULL,
+  `judul` varchar(100) COLLATE latin1_general_ci NOT NULL,
+  `url` varchar(100) COLLATE latin1_general_ci NOT NULL,
+  `gambar` varchar(100) COLLATE latin1_general_ci NOT NULL,
   `tgl_posting` date NOT NULL,
-  `deskripsi` text DEFAULT NULL
+  `deskripsi` text COLLATE latin1_general_ci
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
 
 --
@@ -121,10 +121,10 @@ CREATE TABLE `banner` (
 --
 
 INSERT INTO `banner` (`id_banner`, `judul`, `url`, `gambar`, `tgl_posting`, `deskripsi`) VALUES
-(19, 'CLEAN', '', 'karawang1.jpg', '2018-12-27', 'Dikelola secara profesional, menghindari benturan kepentingan, tidak menoleransi suap, menjunjung tinggi kepercayaan dan integritas. Berpedoman pada asas tata kelola korporasi yang baik.'),
-(20, 'CONFIDENT', 'http://www.lokomedia.web.id', 'karawang2.jpg', '2018-12-27', 'Berperan dalam pembangunan ekonomi nasional, menjadi pelopor dalam reformasi Badan Usaha Milik Negara (BUMN), dan membangun kebanggaan bangsa'),
-(21, 'Commercial', 'http://www.lokomedia.web.id', 'bendungan-walahar.jpg', '2018-12-27', 'Menciptakan nilai tambah dengan orientasi komersial, mengambil keputusan berdasarkan prinsip-prinsip bisnis yang sehat.'),
-(22, 'COMPETITIVE', 'http://www.lokomedia.web.id', 'karawang5.jpg', '2018-12-27', 'Mampu berkompetisi dalam skala regional maupun internasional, mendorong pertumbuhan investasi, membangun budaya sadar biaya dan menghargai kinerja');
+(19, 'BST', '', 'bst.png', '2018-12-27', 'BST : Merupakan layanan transportasi bus di solo milik pemerintah Kota Surakarta'),
+(20, 'STADION MANAHAN', '', 'manahan.png', '2018-12-27', 'manahan adalah tempat olahraga di solo'),
+(21, 'Balaikota Surakarta', '', 'balaikota.png', '2018-12-27', 'Balaikota Surakarta merupakan tempat iconic di Kota Surakarta yang terletak di jantung kota.'),
+(22, 'SOLO SAFARI ', '', 'solosafari.png', '2018-12-27', 'Solo Safari : Solo Safari, terdapat berbagai spesies hewan dan tumbuhan. Dengan konsep wisata alam, jalan-jalan yang ada di dalam taman dikelilingi pohon-pohon besar dan rindang.');
 
 -- --------------------------------------------------------
 
@@ -133,25 +133,25 @@ INSERT INTO `banner` (`id_banner`, `judul`, `url`, `gambar`, `tgl_posting`, `des
 --
 
 CREATE TABLE `berita` (
-  `id_berita` int(5) NOT NULL,
-  `id_kategori` int(5) NOT NULL,
-  `username` varchar(30) NOT NULL,
-  `judul` varchar(100) NOT NULL,
-  `sub_judul` varchar(255) NOT NULL,
-  `youtube` varchar(100) NOT NULL,
-  `judul_seo` varchar(100) NOT NULL,
-  `headline` enum('Y','N') NOT NULL DEFAULT 'Y',
-  `aktif` enum('Y','N') NOT NULL DEFAULT 'N',
-  `utama` enum('Y','N') NOT NULL DEFAULT 'Y',
+  `id_berita` int NOT NULL,
+  `id_kategori` int NOT NULL,
+  `username` varchar(30) COLLATE latin1_general_ci NOT NULL,
+  `judul` varchar(100) COLLATE latin1_general_ci NOT NULL,
+  `sub_judul` varchar(255) COLLATE latin1_general_ci NOT NULL,
+  `youtube` varchar(100) COLLATE latin1_general_ci NOT NULL,
+  `judul_seo` varchar(100) COLLATE latin1_general_ci NOT NULL,
+  `headline` enum('Y','N') COLLATE latin1_general_ci NOT NULL DEFAULT 'Y',
+  `aktif` enum('Y','N') COLLATE latin1_general_ci NOT NULL DEFAULT 'N',
+  `utama` enum('Y','N') COLLATE latin1_general_ci NOT NULL DEFAULT 'Y',
   `isi_berita` longtext CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  `keterangan_gambar` text NOT NULL,
-  `hari` varchar(20) NOT NULL,
+  `keterangan_gambar` text COLLATE latin1_general_ci NOT NULL,
+  `hari` varchar(20) COLLATE latin1_general_ci NOT NULL,
   `tanggal` date NOT NULL,
   `jam` time NOT NULL,
-  `gambar` varchar(100) NOT NULL,
-  `dibaca` int(5) NOT NULL DEFAULT 1,
-  `tag` varchar(100) NOT NULL,
-  `status` enum('Y','N') NOT NULL DEFAULT 'Y'
+  `gambar` varchar(100) COLLATE latin1_general_ci NOT NULL,
+  `dibaca` int NOT NULL DEFAULT '1',
+  `tag` varchar(100) COLLATE latin1_general_ci NOT NULL,
+  `status` enum('Y','N') COLLATE latin1_general_ci NOT NULL DEFAULT 'Y'
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
 
 --
@@ -220,11 +220,11 @@ INSERT INTO `berita` (`id_berita`, `id_kategori`, `username`, `judul`, `sub_judu
 (666, 61, 'admin', 'Pentax Q-S1 Kamera Mirorless Style Retro', '', '', 'pentax-qs1-kamera-mirorless-style-retro', 'N', 'Y', 'N', '<p>Q-S1 ini menawarkan ISO sampai 12,800 dengan kecepatan shutter sampai 1/2000 detik , selain itu kamera kompak ini pun menyertakan sensor gyro untuk mengurangi efek getaran atau goyangan. Kamera kompak retro ini pun mampu merekam video FULL HD dengan kecepatan 30fps dan mendukung 8 lensa yang kompatibel dengan Q-mount.</p>\r\n<p>Ada juga fungsi efek digital filter sebanyak 17 buah untuk menghasilkan efek bokeh, plus ada tambahan 21 mode adegan/scene serta mode 11 custom image. Layar LCDnya berukuran 3 inci beresolusi 460K dengan teknologi anti pantulan dan mendukung 170 derajat sudut pandang.</p>\r\n<p>Sayangnya kamera ini masih belum mendukung Wi-Fi yang mulai dibutuhkan untuk kemudahan berbagai foto.</p>\r\n<p>Q-S1 akan tersedia pada awal September 2014 dengan harga sekitar 500 USD untuk body saja dan 637 USD untuk kit dengan lensa 5-15mm.</p>', '', 'Senin', '2014-08-11', '01:01:13', '86pentax-qs1.png', 45, 'teknologi', 'Y'),
 (667, 62, 'admin', 'Apple iWatch Bakal Dirilis Bulan Depan', '', '', 'apple-iwatch-bakal-dirilis-bulan-depan', 'N', 'Y', 'N', '<p>iWatch yang sudah lama dinanti-nanti oleh banyak pihak bakal secara resmi diluncurkan. Salah satu orang yang punya reputasi bagus dalam membocorkan informasi produk Apple, John Gruber, menyatakan bahwa iWatch akan direlease bulan depan.</p>\r\n<p>Peryataan seorang publisher asal Philadelphia ini memang dipercaya banyak orang sebagai kebenaran. Pasalnya, Apple akan menggelar event pada 9 September mendatang. Kemungkinan besar, iPhone 6 sekaligus iWatch bakal secara resmi direlease pada saat yang bersamaan saat itu juga. Keihatannya, Apple benar-benar sibuk untuk menyiapkan dua produk ini mengingat persaingann yang semakin berat. Dengan meluncurkan dua produk sekaligus, diharapkan bakal mendobrak pasar dan menciptakan momentum positif.</p>\r\n<p>Smartwatch ini diprediksi akan direlease dengan inovasi yang &ldquo;out of the box&rdquo; cirikhas Apple. iWatch diberitakan bakal menggunakan beberapa sensor yang dapat metrik-metrik kesehatan, seperti tingkat tekanan darah, tingkat denyut jantung atau bahkan tingkat gula darah si pengguna. Meski begitu, masih menjadi pernyataan bagaimana kualitas sistem internet yang ada pada iWatch.</p>', '', 'Senin', '2014-08-11', '01:04:24', '74apple-iwatch.jpg', 31, 'teknologi', 'Y'),
 (670, 62, 'admin', '7 Efek Buruk dari Konsumsi Obat Tidur', '', '', '7-efek-buruk-dari-konsumsi-obat-tidur', 'N', 'Y', 'N', '<p>Konsumsi obat tidur kerap dipilih bagi mereka yang mengalami kesulitan tidur atau insomnia. Mereka berpikir bahwa obat tidur mampu memberikan apa yang diinginkan, yaitu tidur dengan lelap. Namun kenyataannya, obat tidur tidak dapat mengobati kondisi tersebut, bahkan hanya memperburuk masalah saja.&nbsp;<br /><br />Di bawah ini beberapa jenis masalah terkait dengan pil tidur dan penggunaan yang terlalu berlebihan, seperti dikutip&nbsp;<em>Health Me Up</em>, Senin (11/8/2014):</p>\r\n<p>1. Efek samping dari obat tidur dapat membuat orang yang meminumnya merasa lupa, merasa pusing, bingung, dan sulit untuk berpikir keesokan harinya.</p>\r\n<p>2. Berlebihan dalam mengonsumsinya, akan memaksa Anda untuk meningkatkan asupannya agar Anda benar-benar tertidur. Sudah jelas, akan menimbulkan efek samping yang lebih besar.</p>\r\n<p>3. Terlalu sering mengonsumsi obat tidur akan membuat Anda ketergantungan yang berkepanjangan. Tidur lelap secara alami, tampaknya hanya mimpi yang jauh dari angan, yang hanya akan membuat Anda mengalami sulit tidur dan kerap merasa cemas.</p>\r\n<p>4. Jika Anda berhenti mengonsumsinya, secara perlahan tubuh akan menggigil, berkeringat, dan mual.</p>\r\n<p>5. Anda harus tahu bahwa obat tidur akan memengaruhi proses dari obat jenis lainnya yang sedang Anda konsumsi. Apakah itu obat pusing, demam, dan lain-lain.</p>\r\n<p>6. Kondisi akan semakin parah, saat Anda menggabungkannya dengan obat penghilang rasa sakit atau obat penenang.</p>\r\n<p>7. Anda harus menyadari bahwa masalah tidur mungkin menjadi pemicu terjadinya beberapa penyakit kesehatan mental, yang mendasari terjadinya gangguan tidur. Dan obat tidak selalu menjadi pilihan yang tepat.</p>', '', 'Senin', '2014-08-11', '09:52:26', '71Obat_Tidur_.jpg', 33, 'kesehatan', 'Y'),
-(685, 62, 'admin', 'Paket Wisata ke Seoul Rp 5,2 Juta Siap Memanjakan Liburan Anda', '', '', 'paket-wisata-ke-seoul-rp-52-juta-siap-memanjakan-liburan-anda', 'N', 'N', 'Y', '<p>Seoul, kota metropolitan yang menjadi jantung Korea Selatan telah menjadi daya tarik tersendiri bagi wisatawan mancanegara termasuk wisatawan Indonesia. Bagaimana tidak?</p>\r\n\r\n<p>Semua tren mulai dari musik, busana, hingga teknologi dimiliki negara ini. Wisatawan Indonesia pun tidak mau ketinggalan untuk sesekali berkesempatan mengunjungi kota yang super modern.</p>\r\n\r\n<p>&quot;Kalau Korea kan dibagi menjadi dua bagian kan. Sudah pastikan fokus all spotnya kita ambil di Korea Selatan mulai dari Seoul, Everland, Korean Demilitarized Zone (DMZ), sampai Busan dengan kecantikannya. Pokoknya kita semuanya lengkap,&quot; kata Dian selaku Marketing Communication Panorama JTB Tours di Plenary Hall, Jakarta Convention Center, Jumat (22/9/2017).</p>\r\n\r\n<p>Bagi Anda yang tidak ingin melewatkan liburan ke Korea, Anda dapat menghadiri rangkaian acara travel fair oleh maskapai Garuda Indonesia yang diadakan serentak di beberapa kota di Indonesia pada tanggal 22-24 September 2017.</p>\r\n\r\n<p>Garuda Indonesia Travel Fair (GTF) Fase II yang dihelat di JCC menghadirkan berbagai macam agen travel yang menawarkan ratusan varian tiket promo dan paket wisata ke seluruh penjuru dunia.<br />\r\nUntuk promo paket wisata ke Seoul, Anda dapat menemukan berbagai macam varian promo yang dapat langsung membawa Anda ke Korea.</p>\r\n\r\n<p>Dengan merogoh kocek Rp 5.290.000 Anda sudah dapat menikmati paket wisata selama 5 hari menyusuri kota Seoul hingga Gunung Sorak dan Everland.</p>\r\n\r\n<p>Fasilitas mulai dari tiket pesawat, hotel, tour guide hingga konsumsi sudah tersedia secara lengkap sehingga pengunjung dapat dimanjakan sepenuhnya dengan keindahan kota Seoul.</p>\r\n\r\n<p>Selain itu, untuk promo tiket penerbangan pesawat,&nbsp;GATF 2017&nbsp;Fase II juga menyediakan promo spesial sebesar Rp 4.661.895 untuk tiket penerbangan pulang-pergi.</p>\r\n\r\n<p>Korea menjadi destinasi wisata yang tepat untuk para pencari suasana dan tantangan baru. Maka itu, saatnya bagi Anda untuk menjadwalkan liburan Anda pergi meluncur ke negeri kimchi!</p>\r\n', '', 'Rabu', '2017-09-27', '14:58:58', 'seoul-korea2.jpg', 51, 'wisata', 'Y'),
+(685, 62, 'admin', 'Paket Wisata ke Seoul Rp 5,2 Juta Siap Memanjakan Liburan Anda', '', '', 'paket-wisata-ke-seoul-rp-52-juta-siap-memanjakan-liburan-anda', 'N', 'N', 'Y', '<p>Seoul, kota metropolitan yang menjadi jantung Korea Selatan telah menjadi daya tarik tersendiri bagi wisatawan mancanegara termasuk wisatawan Indonesia. Bagaimana tidak?</p>\r\n\r\n<p>Semua tren mulai dari musik, busana, hingga teknologi dimiliki negara ini. Wisatawan Indonesia pun tidak mau ketinggalan untuk sesekali berkesempatan mengunjungi kota yang super modern.</p>\r\n\r\n<p>&quot;Kalau Korea kan dibagi menjadi dua bagian kan. Sudah pastikan fokus all spotnya kita ambil di Korea Selatan mulai dari Seoul, Everland, Korean Demilitarized Zone (DMZ), sampai Busan dengan kecantikannya. Pokoknya kita semuanya lengkap,&quot; kata Dian selaku Marketing Communication Panorama JTB Tours di Plenary Hall, Jakarta Convention Center, Jumat (22/9/2017).</p>\r\n\r\n<p>Bagi Anda yang tidak ingin melewatkan liburan ke Korea, Anda dapat menghadiri rangkaian acara travel fair oleh maskapai Garuda Indonesia yang diadakan serentak di beberapa kota di Indonesia pada tanggal 22-24 September 2017.</p>\r\n\r\n<p>Garuda Indonesia Travel Fair (GTF) Fase II yang dihelat di JCC menghadirkan berbagai macam agen travel yang menawarkan ratusan varian tiket promo dan paket wisata ke seluruh penjuru dunia.<br />\r\nUntuk promo paket wisata ke Seoul, Anda dapat menemukan berbagai macam varian promo yang dapat langsung membawa Anda ke Korea.</p>\r\n\r\n<p>Dengan merogoh kocek Rp 5.290.000 Anda sudah dapat menikmati paket wisata selama 5 hari menyusuri kota Seoul hingga Gunung Sorak dan Everland.</p>\r\n\r\n<p>Fasilitas mulai dari tiket pesawat, hotel, tour guide hingga konsumsi sudah tersedia secara lengkap sehingga pengunjung dapat dimanjakan sepenuhnya dengan keindahan kota Seoul.</p>\r\n\r\n<p>Selain itu, untuk promo tiket penerbangan pesawat,&nbsp;GATF 2017&nbsp;Fase II juga menyediakan promo spesial sebesar Rp 4.661.895 untuk tiket penerbangan pulang-pergi.</p>\r\n\r\n<p>Korea menjadi destinasi wisata yang tepat untuk para pencari suasana dan tantangan baru. Maka itu, saatnya bagi Anda untuk menjadwalkan liburan Anda pergi meluncur ke negeri kimchi!</p>\r\n', '', 'Rabu', '2017-09-27', '14:58:58', 'seoul-korea2.jpg', 52, 'wisata', 'Y'),
 (686, 63, 'admin', 'Dijual Mahal, Samsung Galaxy Note 8 Lebih Laku dari Galaxy S8', '', '', 'dijual-mahal-samsung-galaxy-note-8-lebih-laku-dari-galaxy-s8', 'N', 'N', 'Y', '<p>Samsung membanderol Galaxy Note 8 dengan harga lebih tinggi dari Galaxy S8. Kendati demikian, perusahaan mengklaim bahwa Galaxy Note terbaru itu justru lebih laris.</p>\r\n\r\n<p>Hal ini diungkap oleh IT &amp; Mobile VP Samsung Electronics Indonesia, So Djien Gie, saat bincang dengan media usai acara Peluncuran Samsung Galaxy Note 8 di Jakarta, Senin (25/9/2017).</p>\r\n\r\n<p>So Djien Gie enggan mengungkap dengan detail angka penjualan Samsung Galaxy Note 8. Namun dia memastikan bahwa smartphone itu merupakan yang paling laris dibandingkan berbagai jagoan Samsung lain.</p>\r\n\r\n<p>&ldquo;Galaxy Note 8 ini adalah yang paling laris. Saya tidak bisa menyebut detailnya, tapi Anda bisa bayangkan. Pemesanannya saja lebih laris dibandingkan Galaxy S8,&rdquo; katanya.</p>\r\n\r\n<p>&ldquo;Dalam waktu tiga hari kami buka pemesanan Galaxy Note 8, jumlah yang dipesan sudah sama atau melebihi Galaxy S8,&rdquo; imbuhnya.</p>\r\n\r\n<p>Harga Samsung Galaxy Note 8 di Indonesia adalah Rp 13 juta. Sementara itu Samsung Galaxy S8 dan S8 Plus dibanderol lebih murah, yakni Rp 10,5 juta dan 12 juta.</p>\r\n\r\n<p>Menurut Soo Djien Gie, Samsung Galaxy Note 8 laris karena memang banyak penggemar setia yang sudah menunggu-nunggu. Dia juga mengatakan bahwa tipe baru itu dibekali dengan banyak pembaruan dibandingkan tipe Note lain.</p>\r\n\r\n<p>Beberapa di antaranya adalah layar sinematik tanpa bezel dan memiliki lengkungan di kedua tepinya, kamera ganda dengan dual optical image stabilizer (OIS), serta S-Pen dan mendapatkan perbaikan fitur.</p>\r\n\r\n<p>Soal spesifikasi lainnya, Samsung Galaxy Note 8 dibekali dengan layar Super AMOLED berukuran 6,3 inci (2960 x 1440 piksel). Otak pemrosesannya berupa chipset Exynos 8895. Samsung memadukannya dengan RAM 6 GB serta memori internal 64 GB yang disertai slot microSD.</p>\r\n\r\n<p><br />\r\nHal menarik lainnya dari smartphone ini merupakan flagship perdananya yang menggunakan kamera ganda dan sejumlah teknologi pendukung lainnya.</p>\r\n\r\n<p>Dua kamera belakang Galaxy Note 8 menggunakan sensor 12 megapixel, dengan bukaan f/1.7 untuk kamera normal dan f/2.4 untuk kamera dengan lensa telenya. Sedangkan kamera depan 8 megapixel.</p>\r\n\r\n<p>Kemampuan baru S-Pen sendiri antara lain ujungnya yang lebih kecil dan tajam, jumlah Air Command yang bertambah dari enam aplikasi menjadi 10 aplikasi, serta fitur anti air. Adapun baterainya berkapasitas 3.300 mAh.</p>\r\n', '', 'Minggu', '2018-12-30', '16:04:44', 'samsung_note_8.jpg', 15, 'teknologi', 'Y'),
-(687, 63, 'admin', 'Usai Juara di Jepang, Ini Target Kevin/Marcus Selanjutnya', '', '', 'usai-juara-di-jepang-ini-target-kevinmarcus-selanjutnya', 'Y', 'N', 'Y', '<p>Tokyo - Kevin Sanjaya Sukamuljo/Marcus Fernaldi Gideon baru saja menambah koleksi gelar juaranya di Jepang Terbuka Super Series 2017. Mereka kini mengincar hasil yang sama di turnamen berikutnya.</p>\r\n\r\n<p>Kevin/Marcus keluar sebagai juara Jepang Terbuka Super Series usai mengalahkan pasangan tuan rumah Takuto Inoue/Yuki Kaneko dalam laga final yang digelar di Tokyo Metropolitan Gymnasium, Minggu (24/9), dengan skor 21-12, 21-15.</p>\r\n\r\n<p>Bagi Kevin/Marcus, itu adalah gelar keempat yang mereka raih di 2017. Di awal tahun, mereka mengukir prestasi gemilang dengan menjuarai tiga turnamen beruntun yaitu All England, India Terbuka Super Series, dan Malaysia Terbuka Super Series Premier.</p>\r\n\r\n<p>Namun Kevin/Marcus juga sempat mengalami penurunan. Cedera yang dialami Kevin membuat pasangan ganda putra terbaik Indonesia itu tak meraih hasil maksimal di Indonesia Terbuka Super Series Premier dan Kejuaraan Dunia 2017.</p>\r\n\r\n<p>Kevin/Marcus kemudian kembali ke trek dengan mencapai final di Korea Terbuka Super Series 2017 pada pekan lalu kendati harus puas sebagai runner-up. Kevin/Marcus akhirnya kembali naik podium tertinggi di Jepang Terbuka Super Series.</p>\r\n\r\n<p>Usai jadi juara di Jepang, Kevin/Marcus bersiap menghadapi turnamen berikutnya yakni Denmark Terbuka Super Series Premier (17-22 Oktober) dan Prancis Terbuka Super Series (24-29 Oktober). Mereka menargetkan hasil maksimal di kedua turnamen tersebut.</p>\r\n\r\n<p>&quot;Target kedepannya ada Denmark Open dan French Open, itu target terdekat kami,&quot; Marcus mengatakan kepada badmintonindonesia.org.</p>\r\n\r\n<p>&quot;Kalau target besar lainnya tentu masih banyak yang ingin kami raih. Yang pasti saya ingin memberikan yang baik di masa depan,&quot; Kevin menambahkan.</p>\r\n', '', 'Minggu', '2018-12-30', '16:04:34', 'kevinmarcus.jpg', 21, 'olahraga', 'Y'),
-(688, 63, 'admin', 'Solidaritas Tanpa Batas untuk Rohingya', '', '', 'solidaritas-tanpa-batas-untuk-rohingya', 'Y', 'Y', 'N', '<p>Kekerasan pecah setelah bentrokan antara kelompok bersenjata dan militer Myanmar akhir Agustus lalu menyebabkan ratusan ribu pengungsi Rohingya melarikan diri ke Bangladesh serta sejumlah negara lainnya. Selain itu, krisis kemanusiaan ini diperkirakan telah menelan 1.000 jiwa.</p>\r\n\r\n<p>Mendengar etnis minoritas Rohingya mendapatkan persekusi di Rakhine Myanmar, kelompok-kelompok Islam di Indonesia geram dan menggalang aksi solidaritas untuk etnis muslim tersebut. Massa menggelar aksi solidaritas untuk Rohingya di Jakarta, Rabu (6/9). Dalam aksinya mereka mengutuk keras pembantaian umat muslim Rohingnya di Myanmar.</p>\r\n\r\n<p>&nbsp;</p>\r\n', '', 'Minggu', '2018-12-30', '16:04:28', 'save-rohingya.jpg', 24, 'internasional', 'Y'),
-(689, 63, 'admin', 'Spiderwoman dari Grobogan Raih Medali Emas Asian Games 2018', '', '', 'spiderwoman-dari-grobogan-raih-medali-emas-asian-games-2018', 'Y', 'N', 'Y', '<p style=\"text-align:justify\"><strong>Palembang --</strong>&nbsp;Atlet panjat tebing putri Indonesia, Aries Susanti Rahayu atau yang biasa disapa dengan Ayu, berhasil meraih medali emas dari nomor kecepatan putri Asian Games 2018, di Jakabaring Sport City (JSC) Sport Climbing, Palembang, Kamis (23/8/2018) malam.</p>\r\n\r\n<p style=\"text-align:justify\">Medali emas ini sekaligus menjadi yang pertama diperoleh di Palembang, Sumatera Selatan. Kemenangan ini didapat setelah tercipta all Indonesia final yang mempertemukan Aries dengan Puji Lestari.Dalam ajang tersebut, Ayu mampu mengalahkan pemanjat asal Rusia, Elena Timofeeva, dengan catatan waktu 7,51 detik. Atas prestasinya itu, Aries dijuluki &#39;Spiderwoman&#39; dari&nbsp;Indonesia.</p>\r\n\r\n<p style=\"text-align:justify\">Jika melihat perawakannya yang terkesan kalem, memang sulit disangka bahwa wanita berjilbab ini ternyata begitu perkasa dalam memanjat dinding. Ketinggian dinding panjat pun justru membuatnya semakin penasaran untuk ditaklukkan.</p>\r\n\r\n<p style=\"text-align:justify\">Ayu pernah mengomentari julukan &#39;Spiderwoman&#39; yang disematkan kepadanya karena prestasinya tersebut yang sangat cepat merayap di dinding panjatan tersebut.</p>\r\n\r\n<p style=\"text-align:justify\">&quot;Saya terserah dengan yang kasih julukan saja. Menurut saya, julukan itu buat kami semua buat timnas panjat tebing Indonesia. Semua Spiderwoman,&quot; katanya pada Mei lalu. Panjat tebing tampaknya memang sudah akrab dengan wanita 23 tahun tersebut sejak masih remaja. Ia mulai menggeluti panjat tebing dan panjat dinding sejak masih duduk di bangku Sekolah Menengah Pertama.</p>\r\n\r\n<p style=\"text-align:justify\">Aries Susanti, Sang &#39;Spiderwoman&#39; dari Grobogan Peraih EmasAries Susanti Rahayu bakal mendapatkan Rp1,5 miliar dari olahraga yang ia cintainya itu. (REUTERS/Edgar Su)</p>\r\n\r\n<p style=\"text-align:justify\">Bahkan sebelum menggeluti panjat tebing maupun panjat dinding, Ayu banyak menggandrungi olahraga lari sejak masih Sekolah Dasar. Kemudian gurunya di sekolah itu yang memperkenalkannya dengan olahraga panjat tebing.</p>\r\n\r\n<p style=\"text-align:justify\">Wanita kelahiran Desa Taruman, Kecamatan Klambu, Kabupaten Grobogan itu pun mulai menambatkan hatinya di panjat dinding karena baginya olahraga itu sangat memacu adrenalin.</p>\r\n\r\n<p style=\"text-align:justify\">Saking jatuh cinta dengan olahraga itu, Ayu bahkan sampai harus mengorbankan masa-masa kuliahnya. Ia hingga harus berhenti kuliah pada semester tiga di jurusan manajemen Fakultas Ekonomi Universitas Muhammadiyah Semarang demi merintis karier sebagai pemanjat tebing andal.</p>\r\n\r\n<p style=\"text-align:justify\">Berkat prestasinya saat ini di Asian Games 2018, kehidupannya pun kini bakal berubah. Sang &#39;Spiderwoman&#39; bakal mengantongi uang Rp1,5 miliar dari pemerintah sebagai imbalan atas emas yang dipersembahkannya untuk Indonesia.&nbsp;</p>\r\n', '', 'Minggu', '2018-12-30', '15:58:07', 'ayu_panjat_tebing_asian_games.jpg', 22, '', 'Y');
+(687, 61, 'admin', 'Momentum Natal Disambut Meriah di Kota Bengawan', '', '', 'momentum-natal-disambut-meriah-di-kota-bengawan', 'Y', 'N', 'Y', '<p>Solo&nbsp;-&nbsp;</p>\r\n\r\n<p>Kota Surakarta senantiasa menjunjung tinggi toleransi antar umat beragama. Hal tersebut dibuktikan dengan memberi kesempatan yang sama bagi berbagai umat beragama untuk mengadakan kegiatan positif di ruang publik. Salah satunya dalam momen menyambut Natal 2024 kali ini diselenggarakan berbagai&nbsp; kegiatan yang menarik. Kegiatan ini dapat disaksikan dan dikunjungi oleh masyarakat umum di Kota Surakarta.&nbsp;</p>\r\n\r\n<p>Rangkaian acara yang dimulai sejak akhir November hingga Januari mendatang ini mengusung semangat berbagi, kreativitas, dan kebersamaan, menciptakan momen Natal yang lebih bermakna.</p>\r\n\r\n<ul>\r\n	<li><strong>30 November 2024</strong>:&nbsp;<em>Baksos Kanstin</em>&nbsp;sepanjang 1000 meter sebagai simbol kepedulian terhadap lingkungan.</li>\r\n	<li><strong>11 Desember 2024</strong>: Donor darah yang diselenggarakan di PMI Solo, Jalan Kolonel Sutarto No. 58, Jebres. Acara ini mengajak masyarakat untuk berkontribusi menyelamatkan nyawa melalui donasi darah.</li>\r\n	<li><strong>8-22 Desember 2024</strong>: Parade musik,&nbsp;<em>make a wish</em>, dan bazar UMKM berlangsung di Balai Kota Surakarta dengan jadwal:</li>\r\n</ul>\r\n\r\n<ul>\r\n	<li>8, 9, 10, 11, 13, 14, 15 Desember 2024&nbsp;</li>\r\n	<li>19 &ndash; 22 Desember 2024<br />\r\n	Acara ini menjadi ruang hiburan sekaligus mendukung produk lokal.</li>\r\n</ul>\r\n\r\n<ul>\r\n	<li><strong>9 Januari 2025</strong>:&nbsp;<em>Natal Bersama Kota</em>&nbsp;di Balai Kota Surakarta sebagai puncak perayaan.</li>\r\n</ul>\r\n\r\n<p>Selain rangkaian acara tersebut, momentum natal juga disambut begitu meriah dengan hadirnya lampu-lampu lampion khas natal di halaman Balai Kota Surakarta. Masyarakat dapat menyaksikan lampion ini secara gratis. Berbagai kegiatan dan agenda tersebut bukan hanya sekadar perayaan, tetapi juga momentum mempererat tali persaudaraan antar masyarakat. Adanya kegiatan seperti ini diharapkan dapat mempertegas komitmen Kota Surakarta dalam menciptakan ruang yang nyaman bagi seluruh umat beragama di Kota Surakarta.&nbsp;</p>\r\n', '', 'Kamis', '2025-01-09', '20:34:53', 'testsolo.jpg', 1, '', 'Y'),
+(688, 63, 'admin', 'Deretan Agenda Menarik Kota Solo Bulan Januari 2025', '', '', 'deretan-agenda-menarik-kota-solo-bulan-januari-2025', 'Y', 'Y', 'N', '<p>Kota Solo merupakan destinasi wisata unggulan di Indonesia yang dikenal akan kekayaan budaya, kuliner khas, dan suasana kota yang ramah. Dengan beragam potensi yang dimiliki, Solo terus berinovasi dalam menghadirkan berbagai acara menarik yang tidak hanya mempromosikan pariwisata, tetapi juga mengangkat potensi lokal. Pada bulan Januari 2025, Solo telah menyiapkan rangkaian agenda istimewa yang sayang untuk dilewatkan.</p>\r\n\r\n<ul>\r\n	<li><strong>Umbul Mantram&nbsp;</strong></li>\r\n</ul>\r\n\r\n<p>Umbul Mantram membuka rangkaian acara Grebeg Sudiro dengan tradisi doa dan ucapan syukur kepada Tuhan Yang Maha Esa. Acara ini akan dilaksanakan pada Kamis, 16 Januari 2025 di Kelurahan Sudiroprajan, Kecamatan Jebres, Solo.</p>\r\n\r\n<ul>\r\n	<li><strong>Bazaar Potensi dan Wisata Perahu</strong></li>\r\n</ul>\r\n\r\n<p>Acara ini akan berlangsung pada tanggal 17-31 Januari 2025 di Kawasan Pasar Gede Solo. Acara ini memadukan kegiatan belanja produk lokal yang menarik di Kawasan Pasar Gede sekaligus wisata air di Dermaga Kali Pepe.</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<ul>\r\n	<li><strong>Sendratari Ramayana Syembara Alengka (Sastra Jendra)&nbsp;</strong></li>\r\n</ul>\r\n\r\n<p>Akan berlangsung di Taman Sriwedari pada tanggal 24 Januari 2025. Berisi pertunjukan sendratari yang mengisahkan epik Ramayana dengan penampilan memukau para seniman lokal. Acara ini menjadi daya tarik bagi pecinta seni dan budaya.</p>\r\n\r\n<ul>\r\n	<li><strong>Grebeg Sudiro</strong></li>\r\n</ul>\r\n\r\n<p>Grebeg Sudiro hadir memeriahkan perayaan Imlek dengan pawai budaya yang penuh warna dan tradisi, mencerminkan kerukunan antar etnis di Kota Solo. Pada tahun ini Grebeg Sudiro akan berlangsung pada tanggal tanggal 26 Januari 2025 Pukul 13.00 WIB di Kawasan Pasar Gede, Surakarta.</p>\r\n\r\n<ul>\r\n	<li><strong>Semarak Harmoni Pesta Kembang Api</strong></li>\r\n</ul>\r\n\r\n<p>Merupakan acara penutup yang spektakuler dengan pesta kembang api yang akan menerangi langit Solo, memberikan pengalaman tidak terlupakan bagi para pengunjung. Diagendakan akan berlangsung pada 28 Januari 2025 di Kawasan Pasar Gede dan Balai Kota Surakarta.</p>\r\n\r\n<p>Jangan lewatkan kesempatan untuk menikmati keunikan dan keindahan budaya Kota Solo melalui berbagai acara tersebut. Catat tanggal-tanggal penting ini dan pastikan Anda menjadi bagian dari kemeriahan yang ditawarkan. Untuk informasi lebih lanjut, kunjungi situs resmi Pemerintah Kota Solo. Mari bersama-sama merayakan kekayaan budaya dan semaraknya acara di Solo!</p>\r\n', '', 'Kamis', '2025-01-09', '12:41:04', 'agendasolo2.jpg', 2, 'hiburan', 'Y'),
+(689, 61, 'admin', 'Aneka Keseruan Malam Tahun Baru di Jalan Slamet Riyadi Solo', '', '', 'aneka-keseruan-malam-tahun-baru-di-jalan-slamet-riyadi-solo', 'Y', 'N', 'Y', '<p style=\"text-align:justify\"><strong>Surakarta --</strong>&nbsp;Malam tahun baru selalu menjadi momen yang dinantikan setiap masyarakat. Berbagai agenda ditawarkan pada momen ini. Kota Surakarta juga turut menawarkan berbagai kegiatan seru menyambut malam tahun baru. Salah satu yang menjadi magnet malam tahun baru di Kota Solo berada di Jalan Slamet Riyadi. Salah satu jalan iconic di Kota Solo ini menawarkan berbagai hal menarik yang siap memanjakan pengunjung.</p>\r\n\r\n<p>Agenda seru yang telah menjadi agenda rutin pada malam tahun baru di Kota Surakarta berada di Jalan Slamet Riyadi yaitu Solo Car Free Night. Acara ini memiliki konsep yang hampir sama dengan Solo Car Free Day hanya saja waktu pelaksanaan diadakan pada malam hari. Pada sepanjang Jalan Slamet Riyadi akan dipadati dengan berbagai kuliner menarik khas UMKM Kota Solo. Selain itu, suasana yang disuguhkan tentu akan lebih meriah karena hadir berbagai pertunjukan live musik dari berbagai komunitas seni di Kota Solo. Masyarakat dapat menyaksikan pertunjukan-pertunjukan tersebut secara gratis dan cukup membayar biaya parkir pada area yang telah disediakan apabila menggunakan kendaraan pribadi. Pada puncak acara, tepat pukul 00.00 WIB langit Jalan Slamet Riyadi akan dimeriahkan dengan pertunjukan ratusan pesta kembang api. Pesta kembang api tersebut menjadi penanda malam tahun baru telah berakhir.</p>\r\n\r\n<p>Rangkaian kegiatan seru pada malam tahun baru di sepanjang Jalan Slamet Riyadi sangat sayang untuk dilewatkan. Bagi anda yang ingin menikmati malam tahun baru dengan meriah di Kota Solo dapat langsung bergabung di tengah masyarakat Kota Solo tanpa perlu sungkan. Selama hadir dalam kegiatan pastikan untuk tetap kondusif dan menjaga kebersihan sekitar.</p>\r\n', '', 'Kamis', '2025-01-09', '12:39:18', 'solo.jpg', 9, '', 'Y');
 
 -- --------------------------------------------------------
 
@@ -233,11 +233,11 @@ INSERT INTO `berita` (`id_berita`, `id_kategori`, `username`, `judul`, `sub_judu
 --
 
 CREATE TABLE `download` (
-  `id_download` int(5) NOT NULL,
-  `judul` varchar(100) NOT NULL,
-  `nama_file` varchar(100) NOT NULL,
+  `id_download` int NOT NULL,
+  `judul` varchar(100) COLLATE latin1_general_ci NOT NULL,
+  `nama_file` varchar(100) COLLATE latin1_general_ci NOT NULL,
   `tgl_posting` date NOT NULL,
-  `hits` int(3) NOT NULL
+  `hits` int NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
 
 --
@@ -262,7 +262,7 @@ INSERT INTO `download` (`id_download`, `judul`, `nama_file`, `tgl_posting`, `hit
 (25, 'Verifikasi Kewajaran Nilai Tanah SIMAK-BMN', 'Contoh_File_Download_1.txt', '2014-09-23', 3),
 (26, 'Instruksi Ketua Umum IPASPI Pusat (new)', 'Contoh_File_Download_1.txt', '2014-09-23', 24),
 (27, 'Relaas Perkara No.0081/Pdt.G/2013/PA.Stg', 'Contoh_File_Download_1.txt', '2014-09-23', 6),
-(31, 'sdfdfsdf', 'lndex.php', '2017-01-27', 7),
+(31, 'sdfdfsdf', 'lndex.php', '2017-01-27', 8),
 (32, 'xxxx', 'lndex.php', '2017-10-11', 0);
 
 -- --------------------------------------------------------
@@ -272,13 +272,13 @@ INSERT INTO `download` (`id_download`, `judul`, `nama_file`, `tgl_posting`, `hit
 --
 
 CREATE TABLE `gallery` (
-  `id_gallery` int(5) NOT NULL,
-  `id_album` int(5) NOT NULL,
-  `username` varchar(50) NOT NULL,
-  `jdl_gallery` varchar(100) NOT NULL,
-  `gallery_seo` varchar(100) NOT NULL,
-  `keterangan` text NOT NULL,
-  `gbr_gallery` varchar(100) NOT NULL
+  `id_gallery` int NOT NULL,
+  `id_album` int NOT NULL,
+  `username` varchar(50) COLLATE latin1_general_ci NOT NULL,
+  `jdl_gallery` varchar(100) COLLATE latin1_general_ci NOT NULL,
+  `gallery_seo` varchar(100) COLLATE latin1_general_ci NOT NULL,
+  `keterangan` text COLLATE latin1_general_ci NOT NULL,
+  `gbr_gallery` varchar(100) COLLATE latin1_general_ci NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
 
 --
@@ -320,17 +320,17 @@ INSERT INTO `gallery` (`id_gallery`, `id_album`, `username`, `jdl_gallery`, `gal
 --
 
 CREATE TABLE `halamanstatis` (
-  `id_halaman` int(5) NOT NULL,
+  `id_halaman` int NOT NULL,
   `judul` varchar(100) NOT NULL,
   `judul_seo` varchar(100) NOT NULL,
   `isi_halaman` text NOT NULL,
   `tgl_posting` date NOT NULL,
   `gambar` varchar(100) NOT NULL,
   `username` varchar(50) CHARACTER SET latin1 COLLATE latin1_general_ci NOT NULL,
-  `dibaca` int(5) NOT NULL DEFAULT 1,
+  `dibaca` int NOT NULL DEFAULT '1',
   `jam` time NOT NULL,
   `hari` varchar(20) CHARACTER SET latin1 COLLATE latin1_general_ci NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `halamanstatis`
@@ -339,9 +339,9 @@ CREATE TABLE `halamanstatis` (
 INSERT INTO `halamanstatis` (`id_halaman`, `judul`, `judul_seo`, `isi_halaman`, `tgl_posting`, `gambar`, `username`, `dibaca`, `jam`, `hari`) VALUES
 (46, 'Tentang Kami', 'tentang-kami', '<p style=\"text-align:justify\">Swarakalibata merupakan portal online berita dan hiburan yang berfokus pada pembaca Indonesia baik yang berada di tanah air maupun yang tinggal di luar negeri. Berita Swarakalibata diupdate selama 24 jam dan mendapatkan kunjungan lebih dari 190 juta pageviews setiap bulannya (Sumber: Google Analytics).</p>\r\n\r\n<p style=\"text-align:justify\">Swarakalibata memiliki beragam konten dari berita umum, politik, peristiwa, internasional, ekonomi, lifestyle, selebriti, sports, bola, auto, teknologi, dan lainya. Swarakalibata juga merupakan salah satu portal pertama yang memberikan inovasi konten video dan mobile (handphone). Para pembaca kami adalah profesional, karyawan kantor, pengusaha, politisi, pelajar, dan ibu rumah tangga.</p>\r\n\r\n<p style=\"text-align:justify\">Konten berita Swarakalibata ditulis secara tajam, singkat, padat, dan dinamis sebagai respons terhadap tuntutan masyarakat yang semakin efisien dalam membaca berita. Selain itu konsep portal berita online juga semakin menjadi pilihan masyarakat karena sifatnya yang up-to-date dan melaporkan kejadian peristiwa secara instant pada saat itu juga sehingga masyarakat tidak perlu menunggu sampai esok harinya untuk membaca berita yang terjadi.</p>\r\n\r\n<p style=\"text-align:justify\">Swarakalibata resmi diluncurkan (Commercial Launch) sebagai portal berita pada 1 Maret 2007) dan merupakan cikal-bakal bisnis online pertama milik PT Php MU Tbk, sebuah perusahan media terintegrasi yang terbesar di Indonesia dan di Asia Tenggara. PHPMU juga memiliki dan mengelola bisnis media TV (RCTI, MNC TV, Global TV), media cetak (Koran Seputar Indonesia, Tabloid Genie, Tabloid Mom &amp; Kiddie, majalah HighEnd, dan Trust), media radio (SINDO, Trijaya FM, ARH Global, Radio Dangdut Indonesia, V Radio), serta sejumlah bisnis media lainnya (mobile VAS, Manajemen artis, rumah produksi film, agen iklan, dll).</p>\r\n\r\n<p style=\"text-align:justify\">Sampai dengan bulan Oktober 2008, Swarakalibata mendapatkan peringkat ke 24 dari Top 100 website terpopuler di Indonesia (Sumber: Alexa.com), peringkat ini terus naik yang disebabkan semakin banyak pengunjung situs yang mengakses Swarakalibata setiap harinya. Selain itu, jumlah pengguna internet yang mencapai 25 juta (Sumber: data APJII per 2005) diperkirakan untuk terus tumbuh dengan signifikan dalam beberapa tahun ke depan.</p>\r\n', '2014-04-07', '', 'admin', 61, '13:10:57', 'Senin'),
 (48, 'Alamat Perusahaan', 'alamat-perusahaan', '<p style=\"text-align:justify\">Swarakalibata merupakan portal online berita dan hiburan yang berfokus pada pembaca Indonesia baik yang berada di tanah air maupun yang tinggal di luar negeri. Berita Swarakalibata diupdate selama 24 jam dan mendapatkan kunjungan lebih dari 190 juta pageviews setiap bulannya (Sumber: Google Analytics).</p>\r\n\r\n<p style=\"text-align:justify\">Swarakalibata memiliki beragam konten dari berita umum, politik, peristiwa, internasional, ekonomi, lifestyle, selebriti, sports, bola, auto, teknologi, dan lainya. Swarakalibata juga merupakan salah satu portal pertama yang memberikan inovasi konten video dan mobile (handphone). Para pembaca kami adalah profesional, karyawan kantor, pengusaha, politisi, pelajar, dan ibu rumah tangga.</p>\r\n\r\n<p style=\"text-align:justify\">Konten berita Swarakalibata ditulis secara tajam, singkat, padat, dan dinamis sebagai respons terhadap tuntutan masyarakat yang semakin efisien dalam membaca berita. Selain itu konsep portal berita online juga semakin menjadi pilihan masyarakat karena sifatnya yang up-to-date dan melaporkan kejadian peristiwa secara instant pada saat itu juga sehingga masyarakat tidak perlu menunggu sampai esok harinya untuk membaca berita yang terjadi.</p>\r\n\r\n<p style=\"text-align:justify\">Swarakalibata resmi diluncurkan (Commercial Launch) sebagai portal berita pada 1 Maret 2007) dan merupakan cikal-bakal bisnis online pertama milik PT Php MU Tbk, sebuah perusahan media terintegrasi yang terbesar di Indonesia dan di Asia Tenggara. PHPMU juga memiliki dan mengelola bisnis media TV (RCTI, MNC TV, Global TV), media cetak (Koran Seputar Indonesia, Tabloid Genie, Tabloid Mom &amp; Kiddie, majalah HighEnd, dan Trust), media radio (SINDO, Trijaya FM, ARH Global, Radio Dangdut Indonesia, V Radio), serta sejumlah bisnis media lainnya (mobile VAS, Manajemen artis, rumah produksi film, agen iklan, dll).</p>\r\n\r\n<p style=\"text-align:justify\">Sampai dengan bulan Oktober 2008, Swarakalibata mendapatkan peringkat ke 24 dari Top 100 website terpopuler di Indonesia (Sumber: Alexa.com), peringkat ini terus naik yang disebabkan semakin banyak pengunjung situs yang mengakses Swarakalibata setiap harinya. Selain itu, jumlah pengguna internet yang mencapai 25 juta (Sumber: data APJII per 2005) diperkirakan untuk terus tumbuh dengan signifikan dalam beberapa tahun ke depan.</p>\r\n', '2014-04-07', '', 'admin', 23, '13:32:28', 'Senin'),
-(52, 'Struktur Organisasi', 'struktur-organisasi', '<p>STRUKTUR ORGANISASI DPPKB KARAWANG</p>\r\n\r\n<p>1. KEPALA DINAS</p>\r\n\r\n<p>2. SEKRETARIS DINAS</p>\r\n\r\n<p>3. 3 KEPALA BIDANG</p>\r\n\r\n<p>4. 1 KASUBAG TU</p>\r\n\r\n<p>5 . 1 KASUBAG KEUANGAN</p>\r\n\r\n<p>6.&nbsp; 9 Kepala Seksi</p>\r\n\r\n<p>7. 12 UPTD yang ada di Kecamatan Kota Bekasi</p>\r\n', '2019-02-11', '', 'admin', 78, '15:21:50', 'Senin'),
-(53, 'Sejarah Instansi', 'sejarah-instansi', '<p style=\"text-align:justify\">Sejarah</p>\r\n\r\n<p style=\"text-align:justify\">Hiasan penanda hajatan pernikahan pada masyarakat wilayah Kabupaten Karawang wilayah selatan, hiasan terbuat dari batang bambu utuh yang disisakan daun bagian atasnya dilengkapi dengan topi caping yang digantung lengkap dengan tali-tali berwarna-warni dibawahnya yang menjuntai (penggunaan tali bisa disubtitusi atau digantikan dengan kertas warna-warni).</p>\r\n\r\n<p style=\"text-align:justify\">Hiasan ini merupakan kearifan lokal masyarakat Kabupaten Karawang bagian selatan yang ditumbuhi banyak pohon bambu.<br />\r\nPemukiman awal<br />\r\nWilayah Karawang sudah sejak lama dihuni manusia. Peninggalan Situs Batujaya dan Situs Cibuaya yang luas menunjukkan pemukiman pada awal masa modern yang mungkin mendahului masa Kerajaan Tarumanagara. Penduduk Karawang semula beragama Hindu dan Budha dan wilayah ini berada di bawah kekuasaan Kerajaan Sunda.</p>\r\n\r\n<p style=\"text-align:justify\">Penyebaran Islam<br />\r\nAgama Islam mulai dianut masyarakat setempat pada masa Kerajaan Sunda, setelah seorang patron bernama Syekh Hasanudin bin Yusuf Idofi, konon dari Makkah, yang terkenal dengan sebutan &quot;Syekh Quro&quot;, Syekh Quro merupakan seorang utusan Raja Campa yang mengikuti pelayaran persahabatan ke Majapahit dari Dinasti Ming yang dipimpin oleh Laksamana Cheng Ho (Kapal Laksamana Cheng Ho tercatat mendarat di Pelabuhan Muara Jati, Kerajaan Singapura (cikal bakal Kesultanan Cirebon pada tahun 1415[9].), ketika kapal sudah berada di Pura, Karawang, Syekh Quro beserta pengikutnya turun dan tinggal untuk menyebarkan agama Islam di wilayah Pura dan kemudian menikah dengan Putri Ki Gede Karawang yang bernama Ratna sondari dan meluaskan pengajarannya hingga ke wilayah Pura Dalem (Pedalaman Pura) kemudian mendirikan pesantren di Desa Pulo Kelapa (sekarang masuk kecamatan Lemah Abang, Kabupaten Karawang)</p>\r\n\r\n<p style=\"text-align:justify\">Dari pernikahannya dengan Ratna Sondari, Syekh Quro memiliki seorang anak yang diberi nama Ahmad, Ahmad inilah yang kemudian dikenal dengan nama Syekh Ahmad (Penghulu Pertama di Karawang), Syekh Ahmad pernah diperintahkan oleh ayahnya untuk membantu Syekh Nur Jati atau Syekh Datuk Kahfi di Pesambangan (sekarang masuk wilayah kecamatan Gunung Jati, Kabupaten Cirebon).</p>\r\n\r\n<p style=\"text-align:justify\">Hubungan penyebaran Islam di Karawang dengan Kesultanan Cirebon</p>\r\n\r\n<p style=\"text-align:justify\">Wayang kulit Cirebon gaya Cilamaya karya Ki Ardi, disungging ulang oleh Ki Enang Sutria dan dibrom ulang oleh Arie Nugraha<br />\r\nPuteri Ki Gede Karawang yaitu Ratna sondari memberikan sumbangan hartanya untuk mendirikan sebuah masjid di Gunung Sembung (letaknya berdekatan dengan Gunung Jati) atau dikenal dengan sebutan (Nur Giri Cipta Rengga) yang bernama Masjid Dog Jumeneng atau Masjid Sang Saka Ratu, yang sampai sekarang masih digunakan dan terawat baik.</p>\r\n\r\n<p style=\"text-align:justify\">Syekh Ahmad (Anak Syekh Quro dengan Ratna sondari) kemudian berkeluarga dan memiliki seorang putera bernama Musanudin, Musanudin inilah yang kemudian menjadi Lebai di Kesultanan Cirebon dan memimpim Masjid Agung Sang Cipta Rasa pada masa kepemimpinan Sunan Gunung Jati</p>\r\n\r\n<p style=\"text-align:justify\">Pengangkatan juru kunci di situs makam Syekh Quro dikuatkan oleh pihak Keraton Kanoman, Cirebon.</p>\r\n\r\n<p style=\"text-align:justify\">Syekh Quro memberikan ajaran yang kemudian dilanjutkan oleh murid-murid Wali Sanga. Makam Syeikh Quro terletak di Pulobata, Kecamatan Lemahabang.</p>\r\n\r\n<p style=\"text-align:justify\">Masa Kesultanan Cirebon<br />\r\nSetelah Kerajaan Sunda runtuh maka wilayah antara sungai Angke dan sungai Cipunegara terbagi dua. Menurut Carita Sajarah Banten, Sunan Gunung Jati pada abad ke 15 membagi wilayah antara sungai Angke dan sungai Cipunegara menjadi dua bagian dengan sungai Citarum sebagai pembatasnya, sebelah timur sungai Citarum hingga sungai Cipunegara masuk wilayah Kesultanan Cirebon yang sekarang menjadi Kabupaten Karawang, Kabupaten Purwakarta dan Kabupaten Subang dan sebelah barat sungai Citarum hingga sungai Angke menjadi wilayah bawahan Kesultanan Banten dengan nama Jayakarta.</p>\r\n\r\n<p style=\"text-align:justify\">Pemerintahan mandiri<br />\r\nSebagai suatu daerah berpemerintahan sendiri tampaknya dimulai semenjak Karawang diduduki oleh Kesultanan Mataram, di bawah pimpinan Wiraperbangsa dari Sumedang Larang tahun 1632. Kesuksesannya menempatkannya sebagai wedana pertama dengan gelar Adipati Kertabumi III. Semenjak masa ini, sistem pertanian melalui pengairan irigasi mulai dikembangkan di Karawang dan perlahan-lahan daerah ini menjadi daerah pusat penghasil beras utama di Pulau Jawa hingga akhir abad ke-20.</p>\r\n\r\n<p style=\"text-align:justify\">Selanjutnya, Karawang menjadi kabupaten dengan bupati pertama Raden Adipati Singaperbangsa bergelar Kertabumi IV yang dilantik 14 September 1633. Tanggal ini dinobatkan menjapada hari jadi Kabupaten Karawang. Selanjutnya, bupatinya berturut-turut adalah R. Anom Wirasuta 1677-1721, R. Jayanegara (gelar R.A Panatayuda II) 1721-1731, R. Martanegara (R. Singanagara dengan gelar R. A Panatayuda III) 1731-1752, R. Mohamad Soleh (gelar R. A Panatayuda IV) 1752-1786. Pada rentang ini terjadi peralihan penguasa dari Mataram kepada VOC (Belanda).</p>\r\n\r\n<p style=\"text-align:justify\">Menjelang Kemerdekaan Indonesia<br />\r\nPada masa menjelang Kemerdekaan Indonesia, Kabupaten Karawang menyimpan banyak catatan sejarah. Rengasdengklok merupakan tempat disembunyikannya Soekarno dan Hatta oleh para pemuda Indonesia untuk secepatnya merumuskan naskah Proklamasi Kemerdekaan Indonesia pada tanggal 16 Agustus 1945.</p>\r\n\r\n<p style=\"text-align:justify\">Kabupaten Karawang juga menjadi inspirasi sastrawan Chairil Anwar menulis karya Antara Karawang-Bekasi karena peristiwa pertempuran di daerah sewaktu pasukan dari Divisi Siliwangi harus meninggalkan Bekasi menuju Karawang yang masih menjadi daerah kekuasaan Republik.</p>\r\n\r\n<p style=\"text-align:justify\">Kecamatan Rengasdengklok adalah daerah pertama milik Republik Indonesia yang gagah berani mengibarkan bendera Merah Putih sebelum Proklamasi kemerdekaan Indonesia di Gaungkan.[butuh rujukan] Oleh karena itu selain dikenal dengan sebutan Lumbung Padi Karawang juga sering disebut sebagai Kota Pangkal Perjuangan. Di Rengasdengklok didirikan sebuah monumen yang dibangun oleh masyarakat sekitar, kemudian pada masa pemerintahan Megawati didirikan Tugu Kebulatan Tekad untuk mengenang sejarah Republik Indonesia.</p>\r\n\r\n<p style=\"text-align:justify\">Setelah Kemerdekaan Indonesia<br />\r\nWilayah Karawang pada masa lalu (hasil pembagian oleh Sunan Gunung Jati pada abad ke 15) kemudian dipecah menjadi dua bagian pada masa perang kemerdekaan sekitar tahun 1948 dengan sungai Citarum dan sungai Cilamaya menjadi pembatasnya, wilayah Kabupaten Karawang Barat meliputi wilayah Kabupaten Karawang sekarang ditambah desa-desa di sebelah barat Citarum yaitu desa-desa Sukasari dan Kertamanah dengan ibukota di kecamatan Karawang, sementara Kabupaten Karawang Timur meliputi wilayah Kabupaten Purwakarta dikurangi desa-desa di kecamatan Sukasari (yang dahulu masih bagian dari Kabupaten Karawang) dan Kabupaten Subang dengan ibukota di kecamatan Subang.</p>\r\n\r\n<p style=\"text-align:justify\">lalu kemudian pada tahun 1950 nama Kabupaten Karawang Timur diubah menjadi Kabupaten Purwakarta dengan ibukota di kecamatan Subang dan Kabupaten Karawang Barat menjadi Krawang dengan ibukota di kecamatan Karawang..</p>\r\n\r\n<p style=\"text-align:justify\">Pada tahun 1968 terjadi pemekaran wilayah Kabupaten Purwakarta yang sebelumnya bernama Kabupaten Karawang Timur menjadi Kabupaten Subang dengan ibukota di kecamatan Subang dan Kabupaten Purwakarta dengan ibukota di kecamatan Purwakarta, karena pada tahun yang sama berlangsung proyek besar bendungan Ir. Djuanda atau yang dikenal dengan nama Bendungan Jatiluhur maka pemerintah pusat pada masa itu merasa perlu untuk menyatukan wilayah waduk Jatiluhur ke dalam satu wilayah kerja yang akhirnya diputuskan dimasukan ke dalam wilayah Kabupaten Purwakarta sehingga pada tahun 1968 wilayah Kabupaten Krawang harus melepaskan desa-desa yang berada disebelah barat sungai Citarum yang masuk dalam proyek besar bendungan Ir. Djuanda atau Bendungan Jatiluhur, desa-desa tersebut adalah desa-desa Sukasari dan Kertamanah yang sekarang masuk dalam kecamatan Sukasari, Kabupaten Purwakarta, sehingga dengan diterbitkannya Undang-Undang No. 4 Tahun 1968 maka wilayah Kabupaten Krawang menjadi berkurang dan wilayah inilah yang dikemudian hari disebut sebagai Kabupaten Karawang</p>\r\n', '2019-02-13', '', 'admin', 37, '14:43:03', 'Rabu'),
-(54, 'Visi dan Misi', 'visi-dan-misi', '<p style=\"text-align:center\"><span style=\"font-size:16px\"><strong>VISI DAN MISI<br />\r\nPEMERINTAH KABUPATEN KARAWANG<br />\r\nPERIODE 2016 - 2021</strong></span></p>\r\n\r\n<p style=\"text-align:center\"><br />\r\n<strong>VISI :</strong><br />\r\nKARAWANG YANG MANDIRI MAJU ADIL DAN MAKMUR<br />\r\n<strong>MISI :</strong><br />\r\n1. Mewujudkan Aparatur Pemerintah Daerah yang Bersih dan Berwibawa.<br />\r\n2. Mewujudkan Kabupaten Karawang yang Berdaya Saing.<br />\r\n3. Mewujudkan Masyarakat Demokratis Berlandaskan Hukum.<br />\r\n4. Mewujudkan Kabupaten Karawang yang Asri dan Lestari.<br />\r\n5. Membangun Kabupaten Karawang Melalui Penguatan Desa.</p>\r\n', '2019-02-13', '', 'admin', 26, '16:17:33', 'Rabu');
+(52, 'Struktur Organisasi', 'struktur-organisasi', '<p>STRUKTUR ORGANISASI DPPKB KARAWANG</p>\r\n\r\n<p>1. KEPALA DINAS</p>\r\n\r\n<p>2. SEKRETARIS DINAS</p>\r\n\r\n<p>3. 3 KEPALA BIDANG</p>\r\n\r\n<p>4. 1 KASUBAG TU</p>\r\n\r\n<p>5 . 1 KASUBAG KEUANGAN</p>\r\n\r\n<p>6.&nbsp; 9 Kepala Seksi</p>\r\n\r\n<p>7. 12 UPTD yang ada di Kecamatan Kota Bekasi</p>\r\n', '2019-02-11', '', 'admin', 94, '15:21:50', 'Senin'),
+(53, 'Sejarah Instansi', 'sejarah-instansi', '<p style=\"text-align:justify\">Sejarah</p>\r\n\r\n<p style=\"text-align:justify\">Hiasan penanda hajatan pernikahan pada masyarakat wilayah Kabupaten Karawang wilayah selatan, hiasan terbuat dari batang bambu utuh yang disisakan daun bagian atasnya dilengkapi dengan topi caping yang digantung lengkap dengan tali-tali berwarna-warni dibawahnya yang menjuntai (penggunaan tali bisa disubtitusi atau digantikan dengan kertas warna-warni).</p>\r\n\r\n<p style=\"text-align:justify\">Hiasan ini merupakan kearifan lokal masyarakat Kabupaten Karawang bagian selatan yang ditumbuhi banyak pohon bambu.<br />\r\nPemukiman awal<br />\r\nWilayah Karawang sudah sejak lama dihuni manusia. Peninggalan Situs Batujaya dan Situs Cibuaya yang luas menunjukkan pemukiman pada awal masa modern yang mungkin mendahului masa Kerajaan Tarumanagara. Penduduk Karawang semula beragama Hindu dan Budha dan wilayah ini berada di bawah kekuasaan Kerajaan Sunda.</p>\r\n\r\n<p style=\"text-align:justify\">Penyebaran Islam<br />\r\nAgama Islam mulai dianut masyarakat setempat pada masa Kerajaan Sunda, setelah seorang patron bernama Syekh Hasanudin bin Yusuf Idofi, konon dari Makkah, yang terkenal dengan sebutan &quot;Syekh Quro&quot;, Syekh Quro merupakan seorang utusan Raja Campa yang mengikuti pelayaran persahabatan ke Majapahit dari Dinasti Ming yang dipimpin oleh Laksamana Cheng Ho (Kapal Laksamana Cheng Ho tercatat mendarat di Pelabuhan Muara Jati, Kerajaan Singapura (cikal bakal Kesultanan Cirebon pada tahun 1415[9].), ketika kapal sudah berada di Pura, Karawang, Syekh Quro beserta pengikutnya turun dan tinggal untuk menyebarkan agama Islam di wilayah Pura dan kemudian menikah dengan Putri Ki Gede Karawang yang bernama Ratna sondari dan meluaskan pengajarannya hingga ke wilayah Pura Dalem (Pedalaman Pura) kemudian mendirikan pesantren di Desa Pulo Kelapa (sekarang masuk kecamatan Lemah Abang, Kabupaten Karawang)</p>\r\n\r\n<p style=\"text-align:justify\">Dari pernikahannya dengan Ratna Sondari, Syekh Quro memiliki seorang anak yang diberi nama Ahmad, Ahmad inilah yang kemudian dikenal dengan nama Syekh Ahmad (Penghulu Pertama di Karawang), Syekh Ahmad pernah diperintahkan oleh ayahnya untuk membantu Syekh Nur Jati atau Syekh Datuk Kahfi di Pesambangan (sekarang masuk wilayah kecamatan Gunung Jati, Kabupaten Cirebon).</p>\r\n\r\n<p style=\"text-align:justify\">Hubungan penyebaran Islam di Karawang dengan Kesultanan Cirebon</p>\r\n\r\n<p style=\"text-align:justify\">Wayang kulit Cirebon gaya Cilamaya karya Ki Ardi, disungging ulang oleh Ki Enang Sutria dan dibrom ulang oleh Arie Nugraha<br />\r\nPuteri Ki Gede Karawang yaitu Ratna sondari memberikan sumbangan hartanya untuk mendirikan sebuah masjid di Gunung Sembung (letaknya berdekatan dengan Gunung Jati) atau dikenal dengan sebutan (Nur Giri Cipta Rengga) yang bernama Masjid Dog Jumeneng atau Masjid Sang Saka Ratu, yang sampai sekarang masih digunakan dan terawat baik.</p>\r\n\r\n<p style=\"text-align:justify\">Syekh Ahmad (Anak Syekh Quro dengan Ratna sondari) kemudian berkeluarga dan memiliki seorang putera bernama Musanudin, Musanudin inilah yang kemudian menjadi Lebai di Kesultanan Cirebon dan memimpim Masjid Agung Sang Cipta Rasa pada masa kepemimpinan Sunan Gunung Jati</p>\r\n\r\n<p style=\"text-align:justify\">Pengangkatan juru kunci di situs makam Syekh Quro dikuatkan oleh pihak Keraton Kanoman, Cirebon.</p>\r\n\r\n<p style=\"text-align:justify\">Syekh Quro memberikan ajaran yang kemudian dilanjutkan oleh murid-murid Wali Sanga. Makam Syeikh Quro terletak di Pulobata, Kecamatan Lemahabang.</p>\r\n\r\n<p style=\"text-align:justify\">Masa Kesultanan Cirebon<br />\r\nSetelah Kerajaan Sunda runtuh maka wilayah antara sungai Angke dan sungai Cipunegara terbagi dua. Menurut Carita Sajarah Banten, Sunan Gunung Jati pada abad ke 15 membagi wilayah antara sungai Angke dan sungai Cipunegara menjadi dua bagian dengan sungai Citarum sebagai pembatasnya, sebelah timur sungai Citarum hingga sungai Cipunegara masuk wilayah Kesultanan Cirebon yang sekarang menjadi Kabupaten Karawang, Kabupaten Purwakarta dan Kabupaten Subang dan sebelah barat sungai Citarum hingga sungai Angke menjadi wilayah bawahan Kesultanan Banten dengan nama Jayakarta.</p>\r\n\r\n<p style=\"text-align:justify\">Pemerintahan mandiri<br />\r\nSebagai suatu daerah berpemerintahan sendiri tampaknya dimulai semenjak Karawang diduduki oleh Kesultanan Mataram, di bawah pimpinan Wiraperbangsa dari Sumedang Larang tahun 1632. Kesuksesannya menempatkannya sebagai wedana pertama dengan gelar Adipati Kertabumi III. Semenjak masa ini, sistem pertanian melalui pengairan irigasi mulai dikembangkan di Karawang dan perlahan-lahan daerah ini menjadi daerah pusat penghasil beras utama di Pulau Jawa hingga akhir abad ke-20.</p>\r\n\r\n<p style=\"text-align:justify\">Selanjutnya, Karawang menjadi kabupaten dengan bupati pertama Raden Adipati Singaperbangsa bergelar Kertabumi IV yang dilantik 14 September 1633. Tanggal ini dinobatkan menjapada hari jadi Kabupaten Karawang. Selanjutnya, bupatinya berturut-turut adalah R. Anom Wirasuta 1677-1721, R. Jayanegara (gelar R.A Panatayuda II) 1721-1731, R. Martanegara (R. Singanagara dengan gelar R. A Panatayuda III) 1731-1752, R. Mohamad Soleh (gelar R. A Panatayuda IV) 1752-1786. Pada rentang ini terjadi peralihan penguasa dari Mataram kepada VOC (Belanda).</p>\r\n\r\n<p style=\"text-align:justify\">Menjelang Kemerdekaan Indonesia<br />\r\nPada masa menjelang Kemerdekaan Indonesia, Kabupaten Karawang menyimpan banyak catatan sejarah. Rengasdengklok merupakan tempat disembunyikannya Soekarno dan Hatta oleh para pemuda Indonesia untuk secepatnya merumuskan naskah Proklamasi Kemerdekaan Indonesia pada tanggal 16 Agustus 1945.</p>\r\n\r\n<p style=\"text-align:justify\">Kabupaten Karawang juga menjadi inspirasi sastrawan Chairil Anwar menulis karya Antara Karawang-Bekasi karena peristiwa pertempuran di daerah sewaktu pasukan dari Divisi Siliwangi harus meninggalkan Bekasi menuju Karawang yang masih menjadi daerah kekuasaan Republik.</p>\r\n\r\n<p style=\"text-align:justify\">Kecamatan Rengasdengklok adalah daerah pertama milik Republik Indonesia yang gagah berani mengibarkan bendera Merah Putih sebelum Proklamasi kemerdekaan Indonesia di Gaungkan.[butuh rujukan] Oleh karena itu selain dikenal dengan sebutan Lumbung Padi Karawang juga sering disebut sebagai Kota Pangkal Perjuangan. Di Rengasdengklok didirikan sebuah monumen yang dibangun oleh masyarakat sekitar, kemudian pada masa pemerintahan Megawati didirikan Tugu Kebulatan Tekad untuk mengenang sejarah Republik Indonesia.</p>\r\n\r\n<p style=\"text-align:justify\">Setelah Kemerdekaan Indonesia<br />\r\nWilayah Karawang pada masa lalu (hasil pembagian oleh Sunan Gunung Jati pada abad ke 15) kemudian dipecah menjadi dua bagian pada masa perang kemerdekaan sekitar tahun 1948 dengan sungai Citarum dan sungai Cilamaya menjadi pembatasnya, wilayah Kabupaten Karawang Barat meliputi wilayah Kabupaten Karawang sekarang ditambah desa-desa di sebelah barat Citarum yaitu desa-desa Sukasari dan Kertamanah dengan ibukota di kecamatan Karawang, sementara Kabupaten Karawang Timur meliputi wilayah Kabupaten Purwakarta dikurangi desa-desa di kecamatan Sukasari (yang dahulu masih bagian dari Kabupaten Karawang) dan Kabupaten Subang dengan ibukota di kecamatan Subang.</p>\r\n\r\n<p style=\"text-align:justify\">lalu kemudian pada tahun 1950 nama Kabupaten Karawang Timur diubah menjadi Kabupaten Purwakarta dengan ibukota di kecamatan Subang dan Kabupaten Karawang Barat menjadi Krawang dengan ibukota di kecamatan Karawang..</p>\r\n\r\n<p style=\"text-align:justify\">Pada tahun 1968 terjadi pemekaran wilayah Kabupaten Purwakarta yang sebelumnya bernama Kabupaten Karawang Timur menjadi Kabupaten Subang dengan ibukota di kecamatan Subang dan Kabupaten Purwakarta dengan ibukota di kecamatan Purwakarta, karena pada tahun yang sama berlangsung proyek besar bendungan Ir. Djuanda atau yang dikenal dengan nama Bendungan Jatiluhur maka pemerintah pusat pada masa itu merasa perlu untuk menyatukan wilayah waduk Jatiluhur ke dalam satu wilayah kerja yang akhirnya diputuskan dimasukan ke dalam wilayah Kabupaten Purwakarta sehingga pada tahun 1968 wilayah Kabupaten Krawang harus melepaskan desa-desa yang berada disebelah barat sungai Citarum yang masuk dalam proyek besar bendungan Ir. Djuanda atau Bendungan Jatiluhur, desa-desa tersebut adalah desa-desa Sukasari dan Kertamanah yang sekarang masuk dalam kecamatan Sukasari, Kabupaten Purwakarta, sehingga dengan diterbitkannya Undang-Undang No. 4 Tahun 1968 maka wilayah Kabupaten Krawang menjadi berkurang dan wilayah inilah yang dikemudian hari disebut sebagai Kabupaten Karawang</p>\r\n', '2019-02-13', '', 'admin', 46, '14:43:03', 'Rabu'),
+(54, 'Visi dan Misi', 'visi-dan-misi', '<p style=\"text-align:center\"><span style=\"font-size:16px\"><strong>VISI DAN MISI<br />\r\nPEMERINTAH KABUPATEN KARAWANG<br />\r\nPERIODE 2016 - 2021</strong></span></p>\r\n\r\n<p style=\"text-align:center\"><br />\r\n<strong>VISI :</strong><br />\r\nKARAWANG YANG MANDIRI MAJU ADIL DAN MAKMUR<br />\r\n<strong>MISI :</strong><br />\r\n1. Mewujudkan Aparatur Pemerintah Daerah yang Bersih dan Berwibawa.<br />\r\n2. Mewujudkan Kabupaten Karawang yang Berdaya Saing.<br />\r\n3. Mewujudkan Masyarakat Demokratis Berlandaskan Hukum.<br />\r\n4. Mewujudkan Kabupaten Karawang yang Asri dan Lestari.<br />\r\n5. Membangun Kabupaten Karawang Melalui Penguatan Desa.</p>\r\n', '2019-02-13', '', 'admin', 32, '16:17:33', 'Rabu');
 
 -- --------------------------------------------------------
 
@@ -350,10 +350,10 @@ INSERT INTO `halamanstatis` (`id_halaman`, `judul`, `judul_seo`, `isi_halaman`, 
 --
 
 CREATE TABLE `header` (
-  `id_header` int(5) NOT NULL,
-  `judul` varchar(100) NOT NULL,
-  `url` varchar(100) NOT NULL,
-  `gambar` varchar(100) NOT NULL,
+  `id_header` int NOT NULL,
+  `judul` varchar(100) COLLATE latin1_general_ci NOT NULL,
+  `url` varchar(100) COLLATE latin1_general_ci NOT NULL,
+  `gambar` varchar(100) COLLATE latin1_general_ci NOT NULL,
   `tgl_posting` date NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
 
@@ -373,14 +373,14 @@ INSERT INTO `header` (`id_header`, `judul`, `url`, `gambar`, `tgl_posting`) VALU
 --
 
 CREATE TABLE `hubungi` (
-  `id_hubungi` int(5) NOT NULL,
-  `nama` varchar(50) NOT NULL,
-  `email` varchar(100) NOT NULL,
-  `subjek` varchar(100) NOT NULL,
-  `pesan` text NOT NULL,
+  `id_hubungi` int NOT NULL,
+  `nama` varchar(50) COLLATE latin1_general_ci NOT NULL,
+  `email` varchar(100) COLLATE latin1_general_ci NOT NULL,
+  `subjek` varchar(100) COLLATE latin1_general_ci NOT NULL,
+  `pesan` text COLLATE latin1_general_ci NOT NULL,
   `tanggal` date NOT NULL,
   `jam` time NOT NULL,
-  `dibaca` enum('Y','N') NOT NULL DEFAULT 'N'
+  `dibaca` enum('Y','N') COLLATE latin1_general_ci NOT NULL DEFAULT 'N'
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
 
 --
@@ -399,7 +399,7 @@ INSERT INTO `hubungi` (`id_hubungi`, `nama`, `email`, `subjek`, `pesan`, `tangga
 --
 
 CREATE TABLE `identitas` (
-  `id_identitas` int(5) NOT NULL,
+  `id_identitas` int NOT NULL,
   `nama_website` varchar(100) NOT NULL,
   `email` varchar(100) NOT NULL,
   `url` varchar(100) CHARACTER SET latin1 COLLATE latin1_general_ci NOT NULL,
@@ -410,14 +410,14 @@ CREATE TABLE `identitas` (
   `meta_keyword` varchar(250) NOT NULL,
   `favicon` varchar(50) NOT NULL,
   `maps` text NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `identitas`
 --
 
 INSERT INTO `identitas` (`id_identitas`, `nama_website`, `email`, `url`, `facebook`, `rekening`, `no_telp`, `meta_deskripsi`, `meta_keyword`, `favicon`, `maps`) VALUES
-(1, 'Website DPPKB Karawang', 'dankrez48@gmail.com', 'http://localhost/lokodinas', 'https://www.facebook.com/dppkbkarawang/', '9000019999805', '1510000', 'Berita Indonesia terkini terpercaya, dan terpopuler, politik, ekonomi, tekno, otomotif, dan olahraga ditulis lengkap dan akurat.', 'berita, internasional, nasional, daerah, olahraga, otomotif, teknologi, news, hiburan, entertainment, indonesia, swarakalibata, lokomedia', 'favpertmin.png', 'https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15863.072845158182!2d107.2976159!3d-6.2941631!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xb8980521223b1f90!2sKantor+DPPKB+Karawang!5e0!3m2!1sid!2sid!4v1546678236217');
+(1, 'Website Surakarta', 'nyujulian81@gmail.com', 'http://localhost/lokodinas', 'https://www.facebook.com/dppkbkarawang/', '9000019999805', '1510000', 'Berita Solo terkini terpercaya, dan terpopuler, politik, ekonomi, tekno, otomotif, dan olahraga ditulis lengkap dan akurat.', 'berita, internasional, nasional, daerah, olahraga, otomotif, teknologi, news, hiburan, entertainment, indonesia, swarakalibata, lokomedia', 'favpertmin.png', 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3955.046735971222!2d110.82968799999999!3d-7.569884000000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7a1660ecd70333%3A0xe68b00be7ec903a2!2sDinas%20Komunikasi%20dan%20Informatika%20Surakarta!5e0!3m2!1sid!2sid!4v1736391674766!5m2!1sid!2sid\" width=\"600\" height=\"450\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade');
 
 -- --------------------------------------------------------
 
@@ -426,11 +426,11 @@ INSERT INTO `identitas` (`id_identitas`, `nama_website`, `email`, `url`, `facebo
 --
 
 CREATE TABLE `iklanatas` (
-  `id_iklanatas` int(5) NOT NULL,
-  `judul` varchar(100) NOT NULL,
-  `username` varchar(50) NOT NULL,
-  `url` varchar(100) NOT NULL,
-  `gambar` varchar(100) NOT NULL,
+  `id_iklanatas` int NOT NULL,
+  `judul` varchar(100) COLLATE latin1_general_ci NOT NULL,
+  `username` varchar(50) COLLATE latin1_general_ci NOT NULL,
+  `url` varchar(100) COLLATE latin1_general_ci NOT NULL,
+  `gambar` varchar(100) COLLATE latin1_general_ci NOT NULL,
   `tgl_posting` date NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
 
@@ -448,11 +448,11 @@ INSERT INTO `iklanatas` (`id_iklanatas`, `judul`, `username`, `url`, `gambar`, `
 --
 
 CREATE TABLE `iklantengah` (
-  `id_iklantengah` int(5) NOT NULL,
-  `judul` varchar(100) NOT NULL,
-  `username` varchar(50) NOT NULL,
-  `url` varchar(100) DEFAULT NULL,
-  `gambar` varchar(100) NOT NULL,
+  `id_iklantengah` int NOT NULL,
+  `judul` varchar(100) COLLATE latin1_general_ci NOT NULL,
+  `username` varchar(50) COLLATE latin1_general_ci NOT NULL,
+  `url` varchar(100) COLLATE latin1_general_ci DEFAULT NULL,
+  `gambar` varchar(100) COLLATE latin1_general_ci NOT NULL,
   `tgl_posting` date NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
 
@@ -461,13 +461,13 @@ CREATE TABLE `iklantengah` (
 --
 
 INSERT INTO `iklantengah` (`id_iklantengah`, `judul`, `username`, `url`, `gambar`, `tgl_posting`) VALUES
-(35, 'link1', 'admin', 'https://members.lokomedia.web.id', 'img1.jpg', '2019-01-12'),
-(34, 'link2', 'admin', 'https://google.co.id', 'img2.jpg', '2019-02-22'),
-(36, 'link3', 'admin', 'https://members.lokomedia.web.id', 'img3.jpg', '2019-01-12'),
-(37, 'link4', 'admin', 'https://members.lokomedia.web.id', 'img4.jpg', '2019-01-12'),
-(38, 'link5', 'admin', 'https://members.lokomedia.web.id', 'img5.jpg', '2019-01-12'),
-(39, 'link6', 'admin', 'https://members.lokomedia.web.id', 'img6.jpg', '2019-01-12'),
-(40, 'link7', 'admin', 'https://members.lokomedia.web.id', 'img7.jpg', '2019-01-12');
+(35, 'profile', 'admin', 'https://denpasarkota.go.id/', 'profile.png', '2019-01-12'),
+(34, 'link2', 'admin', 'https://google.co.id', 'wisata.png', '2019-02-22'),
+(36, 'link3', 'admin', 'https://members.lokomedia.web.id', 'berita.png', '2019-01-12'),
+(37, 'link4', 'admin', 'https://members.lokomedia.web.id', 'data.png', '2019-01-12'),
+(38, 'link5', 'admin', 'https://members.lokomedia.web.id', 'informasi.png', '2019-01-12'),
+(39, 'link6', 'admin', 'https://members.lokomedia.web.id', 'kontak.png', '2019-01-12'),
+(41, 'link6', 'admin', 'https://members.lokomedia.web.id', 'data.png', '2019-01-12');
 
 -- --------------------------------------------------------
 
@@ -476,10 +476,10 @@ INSERT INTO `iklantengah` (`id_iklantengah`, `judul`, `username`, `url`, `gambar
 --
 
 CREATE TABLE `katajelek` (
-  `id_jelek` int(11) NOT NULL,
-  `kata` varchar(60) DEFAULT NULL,
-  `username` varchar(50) NOT NULL,
-  `ganti` varchar(60) DEFAULT NULL
+  `id_jelek` int NOT NULL,
+  `kata` varchar(60) COLLATE latin1_general_ci DEFAULT NULL,
+  `username` varchar(50) COLLATE latin1_general_ci NOT NULL,
+  `ganti` varchar(60) COLLATE latin1_general_ci DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
 
 --
@@ -500,12 +500,12 @@ INSERT INTO `katajelek` (`id_jelek`, `kata`, `username`, `ganti`) VALUES
 --
 
 CREATE TABLE `kategori` (
-  `id_kategori` int(5) NOT NULL,
-  `nama_kategori` varchar(50) NOT NULL,
-  `username` varchar(50) NOT NULL,
-  `kategori_seo` varchar(100) NOT NULL,
-  `aktif` enum('Y','N') NOT NULL DEFAULT 'Y',
-  `sidebar` int(10) NOT NULL
+  `id_kategori` int NOT NULL,
+  `nama_kategori` varchar(50) COLLATE latin1_general_ci NOT NULL,
+  `username` varchar(50) COLLATE latin1_general_ci NOT NULL,
+  `kategori_seo` varchar(100) COLLATE latin1_general_ci NOT NULL,
+  `aktif` enum('Y','N') COLLATE latin1_general_ci NOT NULL DEFAULT 'Y',
+  `sidebar` int NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
 
 --
@@ -524,15 +524,15 @@ INSERT INTO `kategori` (`id_kategori`, `nama_kategori`, `username`, `kategori_se
 --
 
 CREATE TABLE `komentar` (
-  `id_komentar` int(5) NOT NULL,
-  `id_berita` int(5) NOT NULL,
-  `nama_komentar` varchar(100) NOT NULL,
-  `url` varchar(100) NOT NULL,
-  `isi_komentar` text NOT NULL,
+  `id_komentar` int NOT NULL,
+  `id_berita` int NOT NULL,
+  `nama_komentar` varchar(100) COLLATE latin1_general_ci NOT NULL,
+  `url` varchar(100) COLLATE latin1_general_ci NOT NULL,
+  `isi_komentar` text COLLATE latin1_general_ci NOT NULL,
   `tgl` date NOT NULL,
   `jam_komentar` time NOT NULL,
-  `aktif` enum('Y','N') NOT NULL DEFAULT 'Y',
-  `email` varchar(100) NOT NULL
+  `aktif` enum('Y','N') COLLATE latin1_general_ci NOT NULL DEFAULT 'Y',
+  `email` varchar(100) COLLATE latin1_general_ci NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
 
 --
@@ -563,14 +563,14 @@ INSERT INTO `komentar` (`id_komentar`, `id_berita`, `nama_komentar`, `url`, `isi
 --
 
 CREATE TABLE `komentarvid` (
-  `id_komentar` int(5) NOT NULL,
-  `id_video` int(5) NOT NULL,
-  `nama_komentar` varchar(100) NOT NULL,
-  `url` varchar(100) NOT NULL,
-  `isi_komentar` text NOT NULL,
+  `id_komentar` int NOT NULL,
+  `id_video` int NOT NULL,
+  `nama_komentar` varchar(100) COLLATE latin1_general_ci NOT NULL,
+  `url` varchar(100) COLLATE latin1_general_ci NOT NULL,
+  `isi_komentar` text COLLATE latin1_general_ci NOT NULL,
   `tgl` date NOT NULL,
   `jam_komentar` time NOT NULL,
-  `aktif` enum('Y','N') NOT NULL DEFAULT 'Y'
+  `aktif` enum('Y','N') COLLATE latin1_general_ci NOT NULL DEFAULT 'Y'
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
 
 --
@@ -593,17 +593,17 @@ INSERT INTO `komentarvid` (`id_komentar`, `id_video`, `nama_komentar`, `url`, `i
 --
 
 CREATE TABLE `link` (
-  `id_link` int(5) NOT NULL,
-  `id_parent` int(5) NOT NULL DEFAULT 0,
+  `id_link` int NOT NULL,
+  `id_parent` int NOT NULL DEFAULT '0',
   `nama_menu` varchar(30) NOT NULL,
   `link` varchar(100) DEFAULT NULL,
   `aktif` enum('Ya','Tidak') NOT NULL DEFAULT 'Ya',
   `groupname` varchar(20) DEFAULT NULL,
-  `urutan` int(3) NOT NULL,
-  `deskripsi` text DEFAULT NULL,
+  `urutan` int NOT NULL,
+  `deskripsi` text,
   `gambar` varchar(30) DEFAULT NULL,
   `icon` varchar(30) DEFAULT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `link`
@@ -622,8 +622,8 @@ INSERT INTO `link` (`id_link`, `id_parent`, `nama_menu`, `link`, `aktif`, `group
 --
 
 CREATE TABLE `logo` (
-  `id_logo` int(5) NOT NULL,
-  `gambar` varchar(100) NOT NULL
+  `id_logo` int NOT NULL,
+  `gambar` varchar(100) COLLATE latin1_general_ci NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
 
 --
@@ -631,7 +631,7 @@ CREATE TABLE `logo` (
 --
 
 INSERT INTO `logo` (`id_logo`, `gambar`) VALUES
-(15, 'logokabkarawang.png');
+(15, 'logosurakarta.png');
 
 -- --------------------------------------------------------
 
@@ -640,15 +640,15 @@ INSERT INTO `logo` (`id_logo`, `gambar`) VALUES
 --
 
 CREATE TABLE `menu` (
-  `id_menu` int(5) NOT NULL,
-  `id_parent` int(5) NOT NULL DEFAULT 0,
+  `id_menu` int NOT NULL,
+  `id_parent` int NOT NULL DEFAULT '0',
   `nama_menu` varchar(30) NOT NULL,
   `link` varchar(100) NOT NULL,
   `aktif` enum('Ya','Tidak') NOT NULL DEFAULT 'Ya',
   `position` enum('Top','Bottom') DEFAULT 'Bottom',
-  `urutan` int(3) NOT NULL,
-  `deskripsi` text DEFAULT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+  `urutan` int NOT NULL,
+  `deskripsi` text
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `menu`
@@ -681,7 +681,7 @@ INSERT INTO `menu` (`id_menu`, `id_parent`, `nama_menu`, `link`, `aktif`, `posit
 --
 
 CREATE TABLE `modul` (
-  `id_modul` int(5) NOT NULL,
+  `id_modul` int NOT NULL,
   `nama_modul` varchar(50) CHARACTER SET latin1 COLLATE latin1_general_ci NOT NULL,
   `username` varchar(50) CHARACTER SET latin1 COLLATE latin1_general_ci NOT NULL,
   `link` varchar(100) CHARACTER SET latin1 COLLATE latin1_general_ci NOT NULL,
@@ -690,9 +690,9 @@ CREATE TABLE `modul` (
   `publish` enum('Y','N') CHARACTER SET latin1 COLLATE latin1_general_ci NOT NULL DEFAULT 'Y',
   `status` enum('user','admin') CHARACTER SET latin1 COLLATE latin1_general_ci NOT NULL,
   `aktif` enum('Y','N') CHARACTER SET latin1 COLLATE latin1_general_ci NOT NULL DEFAULT 'Y',
-  `urutan` int(5) NOT NULL,
+  `urutan` int NOT NULL,
   `link_seo` varchar(50) CHARACTER SET latin1 COLLATE latin1_general_ci NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `modul`
@@ -736,16 +736,16 @@ INSERT INTO `modul` (`id_modul`, `nama_modul`, `username`, `link`, `static_conte
 --
 
 CREATE TABLE `mod_alamat` (
-  `id_alamat` int(5) NOT NULL,
+  `id_alamat` int NOT NULL,
   `alamat` text CHARACTER SET latin1 COLLATE latin1_general_ci NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `mod_alamat`
 --
 
 INSERT INTO `mod_alamat` (`id_alamat`, `alamat`) VALUES
-(1, '<p><strong>Alamat Kantor :&nbsp;</strong>Jl. Ciremai, Karangpawitan, Karawang Bar., Kabupaten Karawang, Jawa Barat 41315</p>\r\n\r\n<p><strong>Telpon :</strong> 0857 1612 9917</p>\r\n\r\n<p><strong>Fax :</strong> 021 88339740</p>\r\n\r\n<p><strong>email : </strong>dankrez48@gmail.com</p>\r\n');
+(1, '<p><strong>Alamat Kantor :&nbsp;</strong>Jl. Jend. Sudirman, Kedung Lumbu, Kec. Ps. Kliwon, Kota Surakarta, Jawa Tengah 57133</p>\r\n\r\n<p><strong>Telpon :</strong> 0857 1612 9917</p>\r\n\r\n<p><strong>Fax :</strong> 021 88339740</p>\r\n\r\n<p><strong>email :&nbsp;</strong>diskominfosp@surakarta.go.id</p>\r\n');
 
 -- --------------------------------------------------------
 
@@ -754,10 +754,10 @@ INSERT INTO `mod_alamat` (`id_alamat`, `alamat`) VALUES
 --
 
 CREATE TABLE `mod_ym` (
-  `id` int(11) NOT NULL,
-  `nama` varchar(255) NOT NULL,
-  `username` varchar(50) NOT NULL,
-  `ym_icon` int(3) NOT NULL
+  `id` int NOT NULL,
+  `nama` varchar(255) COLLATE latin1_general_ci NOT NULL,
+  `username` varchar(50) COLLATE latin1_general_ci NOT NULL,
+  `ym_icon` int NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
 
 -- --------------------------------------------------------
@@ -767,11 +767,11 @@ CREATE TABLE `mod_ym` (
 --
 
 CREATE TABLE `pasangiklan` (
-  `id_pasangiklan` int(5) NOT NULL,
-  `judul` varchar(100) NOT NULL,
-  `username` varchar(50) NOT NULL,
-  `url` varchar(100) NOT NULL,
-  `gambar` varchar(100) NOT NULL,
+  `id_pasangiklan` int NOT NULL,
+  `judul` varchar(100) COLLATE latin1_general_ci NOT NULL,
+  `username` varchar(50) COLLATE latin1_general_ci NOT NULL,
+  `url` varchar(100) COLLATE latin1_general_ci NOT NULL,
+  `gambar` varchar(100) COLLATE latin1_general_ci NOT NULL,
   `tgl_posting` date NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
 
@@ -790,12 +790,12 @@ INSERT INTO `pasangiklan` (`id_pasangiklan`, `judul`, `username`, `url`, `gambar
 --
 
 CREATE TABLE `playlist` (
-  `id_playlist` int(5) NOT NULL,
-  `jdl_playlist` varchar(100) NOT NULL,
-  `username` varchar(50) NOT NULL,
-  `playlist_seo` varchar(100) NOT NULL,
-  `gbr_playlist` varchar(100) NOT NULL,
-  `aktif` enum('Y','N') NOT NULL DEFAULT 'Y'
+  `id_playlist` int NOT NULL,
+  `jdl_playlist` varchar(100) COLLATE latin1_general_ci NOT NULL,
+  `username` varchar(50) COLLATE latin1_general_ci NOT NULL,
+  `playlist_seo` varchar(100) COLLATE latin1_general_ci NOT NULL,
+  `gbr_playlist` varchar(100) COLLATE latin1_general_ci NOT NULL,
+  `aktif` enum('Y','N') COLLATE latin1_general_ci NOT NULL DEFAULT 'Y'
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
 
 --
@@ -803,8 +803,8 @@ CREATE TABLE `playlist` (
 --
 
 INSERT INTO `playlist` (`id_playlist`, `jdl_playlist`, `username`, `playlist_seo`, `gbr_playlist`, `aktif`) VALUES
-(61, 'Video Umum', 'admin', 'video-umum', 'karawangku.jpg', 'Y'),
-(60, 'Kegiatan Karawang', 'admin', 'kegiatan-karawang', 'ilovekarawang.jpg', 'Y');
+(61, 'Video Umum', 'admin', 'video-umum', 'metamorfosasolo.png', 'Y'),
+(60, 'Kegiatan Karawang', 'admin', 'kegiatan-karawang', 'ilovesolo.png', 'Y');
 
 -- --------------------------------------------------------
 
@@ -813,12 +813,12 @@ INSERT INTO `playlist` (`id_playlist`, `jdl_playlist`, `username`, `playlist_seo
 --
 
 CREATE TABLE `poling` (
-  `id_poling` int(5) NOT NULL,
-  `pilihan` varchar(100) NOT NULL,
-  `status` varchar(20) NOT NULL,
-  `username` varchar(50) NOT NULL,
-  `rating` int(5) NOT NULL DEFAULT 0,
-  `aktif` enum('Y','N') NOT NULL
+  `id_poling` int NOT NULL,
+  `pilihan` varchar(100) COLLATE latin1_general_ci NOT NULL,
+  `status` varchar(20) COLLATE latin1_general_ci NOT NULL,
+  `username` varchar(50) COLLATE latin1_general_ci NOT NULL,
+  `rating` int NOT NULL DEFAULT '0',
+  `aktif` enum('Y','N') COLLATE latin1_general_ci NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
 
 --
@@ -826,12 +826,12 @@ CREATE TABLE `poling` (
 --
 
 INSERT INTO `poling` (`id_poling`, `pilihan`, `status`, `username`, `rating`, `aktif`) VALUES
-(18, 'Siapa yang layak jadi juara Liga Champions 2017-2018 ', 'Pertanyaan', 'admin', 0, 'Y'),
-(25, 'Real Madrid', 'Jawaban', 'admin', 35, 'Y'),
-(31, 'Juventus', 'Jawaban', 'admin', 7, 'Y'),
-(32, 'Manchester City', 'Jawaban', 'admin', 9, 'Y'),
-(33, 'Paris Saint Germain', 'Jawaban', 'admin', 10, 'Y'),
-(35, 'Manchester United', 'Jawaban', 'admin', 10, 'Y');
+(18, 'Kandidat Walikota Surakarta', 'Pertanyaan', 'admin', 0, 'Y'),
+(25, 'Real Madrid', 'Jawaban', 'admin', 35, 'N'),
+(31, 'Juventus', 'Jawaban', 'admin', 7, 'N'),
+(32, 'Manchester City', 'Jawaban', 'admin', 9, 'N'),
+(33, 'Teguh Prakosa', 'Jawaban', 'admin', 10, 'Y'),
+(35, 'Respati Ardi', 'Jawaban', 'admin', 10, 'Y');
 
 -- --------------------------------------------------------
 
@@ -840,11 +840,11 @@ INSERT INTO `poling` (`id_poling`, `pilihan`, `status`, `username`, `rating`, `a
 --
 
 CREATE TABLE `sekilasinfo` (
-  `id_sekilas` int(5) NOT NULL,
-  `info` varchar(100) NOT NULL,
+  `id_sekilas` int NOT NULL,
+  `info` varchar(100) COLLATE latin1_general_ci NOT NULL,
   `tgl_posting` date NOT NULL,
-  `gambar` varchar(100) NOT NULL,
-  `aktif` enum('Y','N') NOT NULL DEFAULT 'Y'
+  `gambar` varchar(100) COLLATE latin1_general_ci NOT NULL,
+  `aktif` enum('Y','N') COLLATE latin1_general_ci NOT NULL DEFAULT 'Y'
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
 
 --
@@ -866,9 +866,9 @@ INSERT INTO `sekilasinfo` (`id_sekilas`, `info`, `tgl_posting`, `gambar`, `aktif
 CREATE TABLE `statistik` (
   `ip` varchar(20) NOT NULL DEFAULT '',
   `tanggal` date NOT NULL,
-  `hits` int(10) NOT NULL DEFAULT 1,
+  `hits` int NOT NULL DEFAULT '1',
   `online` varchar(255) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `statistik`
@@ -2648,7 +2648,16 @@ INSERT INTO `statistik` (`ip`, `tanggal`, `hits`, `online`) VALUES
 ('185.191.171.19', '2024-02-19', 1, '1708281150'),
 ('185.191.171.8', '2024-02-19', 1, '1708281354'),
 ('185.191.171.7', '2024-02-19', 1, '1708293448'),
-('103.115.104.13', '2024-02-19', 1, '1708307493');
+('103.115.104.13', '2024-02-19', 1, '1708307493'),
+('127.0.0.1', '2025-01-01', 23, '1735746711'),
+('::1', '2025-01-01', 6, '1735746474'),
+('127.0.0.1', '2025-01-02', 89, '1735814076'),
+('127.0.0.1', '2025-01-03', 3, '1735874970'),
+('127.0.0.1', '2025-01-05', 1, '1736046986'),
+('127.0.0.1', '2025-01-07', 24, '1736230054'),
+('127.0.0.1', '2025-01-09', 86, '1736441814'),
+('127.0.0.1', '2025-01-10', 50, '1736524795'),
+('127.0.0.1', '2025-01-12', 30, '1736656646');
 
 -- --------------------------------------------------------
 
@@ -2657,11 +2666,11 @@ INSERT INTO `statistik` (`ip`, `tanggal`, `hits`, `online`) VALUES
 --
 
 CREATE TABLE `tag` (
-  `id_tag` int(5) NOT NULL,
-  `nama_tag` varchar(100) NOT NULL,
-  `username` varchar(50) NOT NULL,
-  `tag_seo` varchar(100) NOT NULL,
-  `count` int(5) NOT NULL
+  `id_tag` int NOT NULL,
+  `nama_tag` varchar(100) COLLATE latin1_general_ci NOT NULL,
+  `username` varchar(50) COLLATE latin1_general_ci NOT NULL,
+  `tag_seo` varchar(100) COLLATE latin1_general_ci NOT NULL,
+  `count` int NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
 
 --
@@ -2691,11 +2700,11 @@ INSERT INTO `tag` (`id_tag`, `nama_tag`, `username`, `tag_seo`, `count`) VALUES
 --
 
 CREATE TABLE `tagvid` (
-  `id_tag` int(5) NOT NULL,
-  `nama_tag` varchar(100) NOT NULL,
-  `username` varchar(50) NOT NULL,
-  `tag_seo` varchar(100) NOT NULL,
-  `count` int(5) NOT NULL
+  `id_tag` int NOT NULL,
+  `nama_tag` varchar(100) COLLATE latin1_general_ci NOT NULL,
+  `username` varchar(50) COLLATE latin1_general_ci NOT NULL,
+  `tag_seo` varchar(100) COLLATE latin1_general_ci NOT NULL,
+  `count` int NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
 
 --
@@ -2708,7 +2717,8 @@ INSERT INTO `tagvid` (`id_tag`, `nama_tag`, `username`, `tag_seo`, `count`) VALU
 (36, 'Nasional', 'admin', 'nasional', 1),
 (39, 'DPPKB', 'admin', 'dppkb', 0),
 (40, 'Kegiatan', 'admin', 'kegiatan', 0),
-(41, 'Wisata', 'admin', 'wisata', 0);
+(41, 'Wisata', 'admin', 'wisata', 0),
+(42, 'Test', 'admin', 'test', 0);
 
 -- --------------------------------------------------------
 
@@ -2717,14 +2727,14 @@ INSERT INTO `tagvid` (`id_tag`, `nama_tag`, `username`, `tag_seo`, `count`) VALU
 --
 
 CREATE TABLE `tbl_comment` (
-  `id_komentar` int(5) NOT NULL,
-  `reply` int(5) NOT NULL,
+  `id_komentar` int NOT NULL,
+  `reply` int NOT NULL,
   `nama_lengkap` varchar(150) NOT NULL,
   `alamat_email` varchar(150) NOT NULL,
   `isi_pesan` text NOT NULL,
   `tanggal_komentar` date NOT NULL,
   `jam_komentar` time NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_comment`
@@ -2756,12 +2766,12 @@ INSERT INTO `tbl_comment` (`id_komentar`, `reply`, `nama_lengkap`, `alamat_email
 --
 
 CREATE TABLE `templates` (
-  `id_templates` int(5) NOT NULL,
-  `judul` varchar(100) NOT NULL,
-  `username` varchar(50) NOT NULL,
-  `pembuat` varchar(50) NOT NULL,
-  `folder` varchar(50) NOT NULL,
-  `aktif` enum('Y','N') NOT NULL DEFAULT 'N'
+  `id_templates` int NOT NULL,
+  `judul` varchar(100) COLLATE latin1_general_ci NOT NULL,
+  `username` varchar(50) COLLATE latin1_general_ci NOT NULL,
+  `pembuat` varchar(50) COLLATE latin1_general_ci NOT NULL,
+  `folder` varchar(50) COLLATE latin1_general_ci NOT NULL,
+  `aktif` enum('Y','N') COLLATE latin1_general_ci NOT NULL DEFAULT 'N'
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
 
 --
@@ -2787,14 +2797,15 @@ CREATE TABLE `users` (
   `level` varchar(20) CHARACTER SET latin1 COLLATE latin1_general_ci NOT NULL DEFAULT 'user',
   `blokir` enum('Y','N') CHARACTER SET latin1 COLLATE latin1_general_ci NOT NULL DEFAULT 'N',
   `id_session` varchar(255) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `users`
 --
 
 INSERT INTO `users` (`username`, `password`, `nama_lengkap`, `email`, `no_telp`, `foto`, `level`, `blokir`, `id_session`) VALUES
-('admin', '$2y$10$ddFXO8YEG8P1U8tEDrDZLOU0hewB8a.5oWBFjDMZn4YHLNkGaQGtW', 'Admin Lokomedia', 'admin@lokomedia.web.id', '085716129917', 'lokomedia.png', 'admin', 'N', 'q173s8hs1jl04st35169ccl8o7');
+('admin', '$2y$10$aLsgnaUn1gOh7rwTw047JO1sLYb0WR6JhBpIuZI4sEqOZZ7w8RbQq', 'Julian Admin', 'admin@lokomedia.web.id', '085716129917', 'lokomedia.png', 'admin', 'N', 'q173s8hs1jl04st35169ccl8o7'),
+('julian', 'julian', 'julian dewanto', 'adaadasasd@gmail.com', '081766245655', '', 'user', 'N', '');
 
 -- --------------------------------------------------------
 
@@ -2803,10 +2814,10 @@ INSERT INTO `users` (`username`, `password`, `nama_lengkap`, `email`, `no_telp`,
 --
 
 CREATE TABLE `users_modul` (
-  `id_umod` int(11) NOT NULL,
+  `id_umod` int NOT NULL,
   `id_session` varchar(255) NOT NULL,
-  `id_modul` int(11) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+  `id_modul` int NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `users_modul`
@@ -2834,20 +2845,20 @@ INSERT INTO `users_modul` (`id_umod`, `id_session`, `id_modul`) VALUES
 --
 
 CREATE TABLE `video` (
-  `id_video` int(5) NOT NULL,
-  `id_playlist` int(5) NOT NULL,
-  `username` varchar(30) NOT NULL,
-  `jdl_video` varchar(100) NOT NULL,
-  `video_seo` varchar(100) NOT NULL,
-  `keterangan` text NOT NULL,
-  `gbr_video` varchar(100) NOT NULL,
-  `video` varchar(100) NOT NULL,
-  `youtube` varchar(100) NOT NULL,
-  `dilihat` int(7) NOT NULL DEFAULT 1,
-  `hari` varchar(20) NOT NULL,
+  `id_video` int NOT NULL,
+  `id_playlist` int NOT NULL,
+  `username` varchar(30) COLLATE latin1_general_ci NOT NULL,
+  `jdl_video` varchar(100) COLLATE latin1_general_ci NOT NULL,
+  `video_seo` varchar(100) COLLATE latin1_general_ci NOT NULL,
+  `keterangan` text COLLATE latin1_general_ci NOT NULL,
+  `gbr_video` varchar(100) COLLATE latin1_general_ci NOT NULL,
+  `video` varchar(100) COLLATE latin1_general_ci NOT NULL,
+  `youtube` varchar(100) COLLATE latin1_general_ci NOT NULL,
+  `dilihat` int NOT NULL DEFAULT '1',
+  `hari` varchar(20) COLLATE latin1_general_ci NOT NULL,
   `tanggal` date NOT NULL,
   `jam` time NOT NULL,
-  `tagvid` varchar(100) NOT NULL
+  `tagvid` varchar(100) COLLATE latin1_general_ci NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
 
 --
@@ -2856,7 +2867,8 @@ CREATE TABLE `video` (
 
 INSERT INTO `video` (`id_video`, `id_playlist`, `username`, `jdl_video`, `video_seo`, `keterangan`, `gbr_video`, `video`, `youtube`, `dilihat`, `hari`, `tanggal`, `jam`, `tagvid`) VALUES
 (176, 61, 'admin', 'Visit Karawang', 'visit-karawang', '<p>Salah satu Kabupaten yang terletak di Provinsi Jawa Barat yang terkenal sebagai Lumbung Padi Nasional. Kota Pangkal Perjuangan. Kota Industri terbesar se Asia Tenggara.</p>\r\n\r\n<p>BANGGA JADI URANG KARAWANG. Banyak sejarah, kekayaan yang KARAWANG miliki.</p>\r\n', '', '', 'https://www.youtube.com/watch?v=GYfEZwbopIQ', 19, 'Rabu', '2019-01-09', '16:06:47', 'wisata'),
-(177, 61, 'admin', 'Kuliner Karawang', 'kuliner-karawang', '<p>Acara &quot;Tau Gak Sih&quot; Trans 7 meliput wisata kuliner di Karawang</p>\r\n', '', '', 'https://www.youtube.com/watch?v=y-zy7RW9P4E', 11, 'Rabu', '2019-01-09', '16:09:32', 'wisata');
+(177, 61, 'admin', 'Implementasi kota cerdas (Smart City) di Kota Surakarta tahun 2024', 'implementasi-kota-cerdas-smart-city-di-kota-surakarta-tahun-2024', '<h1><span style=\"font-size:14px\">Implementasi kota cerdas (Smart City) di Kota Surakarta tahun 2024</span></h1>\r\n', 'smartgoverment.png', '', 'https://www.youtube.com/watch?v=yyPmZG-3hIk', 11, 'Rabu', '2019-01-09', '16:09:32', 'teknologi'),
+(178, 61, 'admin', 'SURAKARTA DALAM BULAN DESEMBER', 'surakarta-dalam-bulan-desember', '', 'vidio2.png', '', 'https://www.youtube.com/watch?v=1-h2DBRFBlg', 0, 'Kamis', '2025-01-09', '20:57:47', '');
 
 --
 -- Indexes for dumped tables
@@ -3074,199 +3086,199 @@ ALTER TABLE `video`
 -- AUTO_INCREMENT for table `agenda`
 --
 ALTER TABLE `agenda`
-  MODIFY `id_agenda` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=70;
+  MODIFY `id_agenda` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=70;
 
 --
 -- AUTO_INCREMENT for table `album`
 --
 ALTER TABLE `album`
-  MODIFY `id_album` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
+  MODIFY `id_album` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
 
 --
 -- AUTO_INCREMENT for table `background`
 --
 ALTER TABLE `background`
-  MODIFY `id_background` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_background` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `banner`
 --
 ALTER TABLE `banner`
-  MODIFY `id_banner` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id_banner` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT for table `berita`
 --
 ALTER TABLE `berita`
-  MODIFY `id_berita` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=690;
+  MODIFY `id_berita` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=690;
 
 --
 -- AUTO_INCREMENT for table `download`
 --
 ALTER TABLE `download`
-  MODIFY `id_download` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+  MODIFY `id_download` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
 -- AUTO_INCREMENT for table `gallery`
 --
 ALTER TABLE `gallery`
-  MODIFY `id_gallery` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=259;
+  MODIFY `id_gallery` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=259;
 
 --
 -- AUTO_INCREMENT for table `halamanstatis`
 --
 ALTER TABLE `halamanstatis`
-  MODIFY `id_halaman` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
+  MODIFY `id_halaman` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
 
 --
 -- AUTO_INCREMENT for table `header`
 --
 ALTER TABLE `header`
-  MODIFY `id_header` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+  MODIFY `id_header` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 
 --
 -- AUTO_INCREMENT for table `hubungi`
 --
 ALTER TABLE `hubungi`
-  MODIFY `id_hubungi` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
+  MODIFY `id_hubungi` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
 
 --
 -- AUTO_INCREMENT for table `identitas`
 --
 ALTER TABLE `identitas`
-  MODIFY `id_identitas` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_identitas` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `iklanatas`
 --
 ALTER TABLE `iklanatas`
-  MODIFY `id_iklanatas` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
+  MODIFY `id_iklanatas` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
 
 --
 -- AUTO_INCREMENT for table `iklantengah`
 --
 ALTER TABLE `iklantengah`
-  MODIFY `id_iklantengah` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
+  MODIFY `id_iklantengah` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
 
 --
 -- AUTO_INCREMENT for table `katajelek`
 --
 ALTER TABLE `katajelek`
-  MODIFY `id_jelek` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id_jelek` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `kategori`
 --
 ALTER TABLE `kategori`
-  MODIFY `id_kategori` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=64;
+  MODIFY `id_kategori` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=64;
 
 --
 -- AUTO_INCREMENT for table `komentar`
 --
 ALTER TABLE `komentar`
-  MODIFY `id_komentar` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=164;
+  MODIFY `id_komentar` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=164;
 
 --
 -- AUTO_INCREMENT for table `komentarvid`
 --
 ALTER TABLE `komentarvid`
-  MODIFY `id_komentar` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=119;
+  MODIFY `id_komentar` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=119;
 
 --
 -- AUTO_INCREMENT for table `link`
 --
 ALTER TABLE `link`
-  MODIFY `id_link` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_link` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `logo`
 --
 ALTER TABLE `logo`
-  MODIFY `id_logo` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id_logo` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `menu`
 --
 ALTER TABLE `menu`
-  MODIFY `id_menu` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=154;
+  MODIFY `id_menu` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=154;
 
 --
 -- AUTO_INCREMENT for table `modul`
 --
 ALTER TABLE `modul`
-  MODIFY `id_modul` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=76;
+  MODIFY `id_modul` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=76;
 
 --
 -- AUTO_INCREMENT for table `mod_alamat`
 --
 ALTER TABLE `mod_alamat`
-  MODIFY `id_alamat` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_alamat` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `mod_ym`
 --
 ALTER TABLE `mod_ym`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `pasangiklan`
 --
 ALTER TABLE `pasangiklan`
-  MODIFY `id_pasangiklan` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+  MODIFY `id_pasangiklan` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 
 --
 -- AUTO_INCREMENT for table `playlist`
 --
 ALTER TABLE `playlist`
-  MODIFY `id_playlist` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=62;
+  MODIFY `id_playlist` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=62;
 
 --
 -- AUTO_INCREMENT for table `poling`
 --
 ALTER TABLE `poling`
-  MODIFY `id_poling` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
+  MODIFY `id_poling` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 
 --
 -- AUTO_INCREMENT for table `sekilasinfo`
 --
 ALTER TABLE `sekilasinfo`
-  MODIFY `id_sekilas` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id_sekilas` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `tag`
 --
 ALTER TABLE `tag`
-  MODIFY `id_tag` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=56;
+  MODIFY `id_tag` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=56;
 
 --
 -- AUTO_INCREMENT for table `tagvid`
 --
 ALTER TABLE `tagvid`
-  MODIFY `id_tag` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
+  MODIFY `id_tag` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
 
 --
 -- AUTO_INCREMENT for table `tbl_comment`
 --
 ALTER TABLE `tbl_comment`
-  MODIFY `id_komentar` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `id_komentar` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT for table `templates`
 --
 ALTER TABLE `templates`
-  MODIFY `id_templates` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `id_templates` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT for table `users_modul`
 --
 ALTER TABLE `users_modul`
-  MODIFY `id_umod` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id_umod` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `video`
 --
 ALTER TABLE `video`
-  MODIFY `id_video` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=178;
+  MODIFY `id_video` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=179;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
